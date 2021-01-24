@@ -1,0 +1,7 @@
+Specify how arguments to each name should  be  completed.   
+If  the  -p option  is supplied, or if no options 
+are supplied, existing completion specifications are printed 
+in a way that allows them to  be  reused  as input.  
+The -r option removes a completion specification for 
+each name, or, if no names are supplied, all completion  specifications.   
+The -E option indicates that the remaining options and actions should apply 
