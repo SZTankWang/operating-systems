@@ -9,7 +9,7 @@ voter::voter(char firstName, char lastName, int RIN, int posCode) {
     lastName = lastName;
     RIN = RIN;
     posCode = posCode;
-    flag = 'Y';
+    flag = 'N';
     next = nullptr;
 }
 
