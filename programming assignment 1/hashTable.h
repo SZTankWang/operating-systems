@@ -18,17 +18,24 @@ private:
     voter ** table;
     posCodeList * posList;
 public:
-    hashTable(int bucketSize);
+    explicit hashTable(int bucketSize);
 
     int hash(int RIN);
 
-    int insertVoter(voter v);
+    int insertVoter(voter * v);
 
     int deleteVoter(int RIN);
 
     info lookUpVoter(int RIN);
 
-    int doVote(int keys[],int size);
+    int doVote(int key);
+
+    int getSize();
+
+    int getTotalVote();
+
+    posCodeList * getListPointer();
+    voter ** getTablePtr();
 
 
 };

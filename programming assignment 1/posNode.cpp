@@ -7,7 +7,7 @@
 #include <iostream>
 #include "voter.h"
 #include "voted.h"
-
+#include "posNode.h"
 using namespace std;
 
 /*constructor function
@@ -17,15 +17,16 @@ using namespace std;
 
 posNode::posNode(voted *voterPtr) {
     voter arg = voterPtr->getVoter();
-    *posCode = arg.getPosCode();
+    posCode = arg.getPosCode();
     votedNum = 1;
     voterHead = voterPtr;
     voterTail = voterPtr;
     nextPosNode = nullptr;
+    output = 0;
 }
 
 int posNode::getPosCode() {
-    return *posCode;
+    return posCode;
 }
 
 int posNode::addVoter(voted *voterPtr) {
@@ -43,7 +44,7 @@ int posNode::listVoter(){
         voter arg_voter = tempPtr->getVoter();
         if(arg_voter.getFlag()=='Y'){
             voterRin = arg_voter.getRIN();
-            cout<<"RIN:"<<voterRin<<"/n";
+            cout<<"RIN:"<<voterRin<<endl;
         }
         tempPtr = tempPtr->getNextVoted();
 
@@ -62,7 +63,7 @@ int posNode::getVotedNum() {
 int posNode::showVoterList() {
     int voterCount;
     voterCount = getVotedNum();
-    cout<<"voted number of participants:"<<"/n";
+    cout<<"voted number of participants:  "<<voterCount<<endl;
     listVoter();
     return 0;
 }
@@ -75,7 +76,7 @@ int posNode::setNextPosNode(posNode *posNodeArg) {
 
 /*function: delete the voted record node that points to a certain voter
  * param: RIN, ID of voter
- * return: 0:success; -1:failure
+ * return: 0:success; -1:failure since not exists
  * */
 int posNode::deleteVotedRecord(int RIN) {
     //traverse the linked list to find
@@ -89,8 +90,19 @@ int posNode::deleteVotedRecord(int RIN) {
             if(prev == nullptr){
                 //update linked list head
                 voterHead = curr->getNextVoted();
-                free(curr);
+                //if current node is also the tail, which means the linked list is going to be empty
+                if(curr == voterTail){
+                    voterTail = prev;
+                }
                 votedNum = votedNum-1;
+                free(curr);
+                return 0;
+            }
+
+            if(curr == voterTail){
+                voterTail = prev;
+                votedNum = votedNum-1;
+                free(curr);
                 return 0;
             }
 
@@ -107,5 +119,22 @@ int posNode::deleteVotedRecord(int RIN) {
     }
 
     return -1;
+}
+
+
+/*function: isOutput
+ * Description: used to tell if this posNode has been selected as a local maximum and get output before
+ * return: 0: no; 1: yes
+ * */
+int posNode::isOutput() {
+    return output;
+}
+
+void posNode::setOutput() {
+    output = 1;
+}
+
+void posNode::reset() {
+    output = 0;
 }
 

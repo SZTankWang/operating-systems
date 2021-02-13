@@ -22,6 +22,13 @@ public:
     int voteCountByPlace();
 
     posNode * findNode(int zip);
+
+    int getVotedTotalCount();
+
+    int isEmpty();
+
+
+    void outputDesc();
 };
 
 

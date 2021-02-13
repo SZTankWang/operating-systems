@@ -9,12 +9,12 @@
 #include "voted.h"
 class posNode {
 private:
-    int * posCode;
+    int posCode;
     int votedNum;
     voted * voterHead;
     voted * voterTail;
     posNode * nextPosNode;
-
+    int output;
 public:
     posNode(voted*voterPtr);
     int getPosCode();
@@ -26,6 +26,12 @@ public:
     int showVoterList();
 
     int deleteVotedRecord(int RIN);
+
+    int isOutput();
+
+    void setOutput();
+
+    void reset();
 };
 
 
