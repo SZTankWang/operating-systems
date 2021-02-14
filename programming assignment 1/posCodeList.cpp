@@ -5,8 +5,7 @@
 
 #include <iostream>
 #include "posCodeList.h"
-#include "voter.h"
-#include "posNode.h"
+
 using namespace std;
 
 posCodeList::posCodeList() {
@@ -43,6 +42,19 @@ int posCodeList::addNewPosNode(posNode *posNodeArg) {
     //list is empty, then add in the first node
     posNodeHead=posNodeArg;
     posNodeTail=posNodeArg;
+    posNodeNum++;
+    return 0;
+}
+
+
+int posCodeList::addNewPosNodeAlt(posNode *posNodeArg){
+    if(posNodeTail!= nullptr){
+        posNodeTail->setNextPosNode(posNodeArg);
+    }
+    else{
+        posNodeHead = posNodeArg;
+        posNodeTail = posNodeArg;
+    }
     posNodeNum++;
     return 0;
 }
@@ -112,24 +124,25 @@ void posCodeList::outputDesc() {
     posNode * headPtr = posNodeHead;
     posNode * tailPtr = posNodeTail;
     posNode * temp = posNodeHead;
-    posNode * prev = nullptr;
+
     posNode * memo;
     int size = posNodeNum;
     for(int a=0;a<size;a++){
+        int max = 0;
         while(temp != nullptr){
-            int max = 0;
 
+            int flag = temp->isOutput();
             //traverse to find local maximum
-            if(temp->isOutput()==0){
+            if(flag==0){
                 int local = temp->getVotedNum();
 
 
-                if(local>max ){
+                if(local>=max ){
                     max = local;
                     memo = temp;
                 }
             }
-            prev = temp;
+
             temp = temp->getNextPosNode();
 
         }

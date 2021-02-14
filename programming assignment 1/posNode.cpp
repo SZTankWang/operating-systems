@@ -5,9 +5,7 @@
 #include "posNode.h"
 
 #include <iostream>
-#include "voter.h"
-#include "voted.h"
-#include "posNode.h"
+
 using namespace std;
 
 /*constructor function
@@ -15,12 +13,12 @@ using namespace std;
  * params: pointer to a voted object
  * */
 
-posNode::posNode(voted *voterPtr) {
-    voter arg = voterPtr->getVoter();
-    posCode = arg.getPosCode();
-    votedNum = 1;
-    voterHead = voterPtr;
-    voterTail = voterPtr;
+posNode::posNode(int zipCode) {
+//    voter arg = voterPtr->getVoter();
+    posCode = zipCode;
+    votedNum = 0;
+    voterHead = nullptr;
+    voterTail = nullptr;
     nextPosNode = nullptr;
     output = 0;
 }
@@ -30,8 +28,14 @@ int posNode::getPosCode() {
 }
 
 int posNode::addVoter(voted *voterPtr) {
-    //insert at votedTail
-    voterTail->setNextVoted(voterPtr);
+    //if previous list is not empty, insert at votedTail
+    if(voterTail!= nullptr){
+        voterTail->setNextVoted(voterPtr);
+    }
+    else{
+        voterTail = voterPtr;
+        voterHead = voterPtr;
+    }
     votedNum ++;
     //error
     return 0;

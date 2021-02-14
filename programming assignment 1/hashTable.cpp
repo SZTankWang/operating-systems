@@ -5,10 +5,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "hashTable.h"
-#include "voter.h"
-#include "info.h"
-#include "posCodeList.h"
-#include "voted.h"
+
 
 using namespace std;
 
@@ -36,6 +33,8 @@ int hashTable::hash(int RIN) {
  * */
 int hashTable::insertVoter(voter * v) {
     int h = hash(v->getRIN());
+    int zip = v->getPosCode();
+    posNode * nodePtr;
     //first check if the voter is already there
     //start from table[h]
 
@@ -55,6 +54,15 @@ int hashTable::insertVoter(voter * v) {
 
             //add this pointer to the posNode voted list
             voterNum ++;
+
+            //check if we need to create a new posCode node
+            nodePtr = posList->findNode(zip);
+            if(nodePtr== nullptr){
+                //new posCode, create one node
+                posNode * newNode = new posNode(zip);
+                posList->addNewPosNode(newNode);
+            }
+
             return 0;
         }
         //else, proceed
@@ -63,6 +71,14 @@ int hashTable::insertVoter(voter * v) {
     //else, current spot is already empty, insert
     table[h] = v;
     voterNum++;
+
+    //check if we need to create a new posCode node
+    nodePtr = posList->findNode(zip);
+    if(nodePtr== nullptr){
+        //new posCode, create one node
+        posNode * newNode = new posNode(zip);
+        posList->addNewPosNode(newNode);
+    }
     return 0;
 
 }
@@ -146,12 +162,12 @@ int hashTable::doVote(int key) {
             //create a voted object to point to this voter
             nodePtr->addVoter(newVoted);
         }
-        //does not exist such as node, create one
-        else if(nodePtr== nullptr){
-
-            posNode * newPosNode = new posNode(newVoted);
-            posList->addNewPosNode(newPosNode);
-        }
+//        //does not exist such as node, create one
+//        else if(nodePtr== nullptr){
+//
+//            posNode * newPosNode = new posNode(newVoted);
+//            posList->addNewPosNode(newPosNode);
+//        }
         cout<<"voter "<<RIN<<" successfully voted!"<<endl;
         return 0;
     }

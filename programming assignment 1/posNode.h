@@ -16,7 +16,7 @@ private:
     posNode * nextPosNode;
     int output;
 public:
-    posNode(voted*voterPtr);
+    posNode(int zipCode);
     int getPosCode();
     int listVoter();
     int addVoter(voted * voterPtr);

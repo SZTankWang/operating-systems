@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include "hashTable.h"
+
 using namespace std;
 /*
  * return: 0 for command without a space; 1 for command with space
@@ -64,6 +64,30 @@ int helper::translateKey(char *paramPtrArg, char * readPtrArg, char *keyArr, int
     }
 
     return 0;
+}
+
+int helper::getNumOfLine(char * fileName) {
+    FILE * fp;
+    fp = fopen(fileName,"r");
+    int count=0;
+    char c;
+    if (fp == NULL)
+    {
+        printf("Could not open file %s", fileName);
+        return 0;
+    }
+
+    // Extract characters from file and store in character c
+    for (c = getc(fp); c != EOF; c = getc(fp))
+        if (c == '\n') // Increment count if this character is newline
+            count = count + 1;
+
+    // Close the file
+    fclose(fp);
+    printf("The file %s has %d lines\n ", fileName, count);
+
+    return count;
+
 }
 
 

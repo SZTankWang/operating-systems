@@ -4,11 +4,16 @@
 #include <stdlib.h>
 #include "hashTable.h"
 #include "helper.h"
-#include "voter.h"
+
 using namespace std;
 
 int main( int argc, char **argv ) {
     cout << "starting mvote..." << endl;
+    int numOfLine;
+    int bucketSize = atoi(argv[4]);
+    auto * Helper = new helper();
+    numOfLine = Helper->getNumOfLine(argv[2]);
+
     int run_flag = 1;
 
     char * readPtr;
@@ -25,15 +30,15 @@ int main( int argc, char **argv ) {
 
     char * actionBuffer;
     char * action;
-    auto * myHash = new hashTable(10);
-    int size = 10;
+    auto * myHash = new hashTable(bucketSize);
+//    int size = 10;
     voter ** tablePtr = myHash->getTablePtr();
-    for(int i=0;i<10;i++){
+    for(int i=0;i<bucketSize;i++){
         tablePtr[i] = nullptr;
     }
     int result; //result flag for inserting a voter
 
-    auto * Helper = new helper();
+
     char * spacePtr; // to indicate if there are spaces in the command
 
     int paramIndex = 0;//used for reading parameter from user input

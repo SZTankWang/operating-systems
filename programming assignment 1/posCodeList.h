@@ -29,6 +29,9 @@ public:
 
 
     void outputDesc();
+
+    //alternative for addNewPosNode, does not start from head
+    int addNewPosNodeAlt(posNode *posNodeArg);
 };
 
 
