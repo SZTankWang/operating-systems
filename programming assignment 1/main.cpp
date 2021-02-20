@@ -44,7 +44,7 @@ int main( int argc, char **argv ) {
     int paramIndex = 0;//used for reading parameter from user input
     //parse command line argument
     char * filename = argv[2];
-//    cout<<filename;
+
     FILE * fp;
     char line[64] ;
 
@@ -57,18 +57,18 @@ int main( int argc, char **argv ) {
     }
 
 
-    /*read file, build up the hash table
+    /* read file, build up the hash table
      *
      * */
     while(fgets(line,64,fp)!= NULL){
-//        cout<<line<<"\n";
+
         //split this line by space
         pch = strtok(line," ");
         voter * newVoter = new voter();//this should now be empty
         char * arr[4];
         int counter =0;
         while(pch!=NULL && counter<5){
-            cout<<pch<<"\n";
+//            cout<<pch<<"\n";
             arr[counter] = pch;
 
             pch = strtok(NULL," ");
@@ -89,6 +89,16 @@ int main( int argc, char **argv ) {
     }
     fclose(fp);
 
+
+    //output welcome message
+    cout<<"mvote|| version 1.0|| author: Zhenming Wang"<<endl;
+    cout<<"command: {l <RIN>} to look up a user with RIN|| {i <RIN> <firstName> <lastName> <zipCode>} to insert a voter||"<<endl;
+    cout<<"{d <rin>} to delete a voter with ID <rin> || {r <rin>} to register for a voter as voted || {bv <filename>} to vote for all the keys in the file. Note: you can use voters50.csv, for example, and put it in the same directory!||"<<endl;
+    cout<<"{v} to present number of people voted so far || {perc} to display voted / total number ratio. || {z <zipcode>} to print participants that have voted in <zipcode>|| {o} to produce a sorted list of zipcode by number of voted people in DESC order||"<<endl;
+    cout<<"{exit} to quit mvote. Enjoy :)"<<endl;
+    cout<<"----------------------------------------"<<endl;
+
+
     /*start command loop
      *
      * */
@@ -99,32 +109,41 @@ int main( int argc, char **argv ) {
         action = (char*)malloc(200*sizeof(char));
 
         char * helperPtr; // this is used for strtok, to seperate params from user input
-        char * tempBuffer = (char *)malloc(100*sizeof(char)); // as well
+        char tempBuffer [100]; // as well
 
         paramIndex = 0; //reset this index everytime
 
-
-
-        cout<<"what do you want? "<<endl;
+        cout<<"--------------------------------------"<<endl;
+        cout<<"$mvote:";
         cin.getline(actionBuffer,100);
 
         //check if the command has spaces in it or not
         spacePtr = Helper->parseCommand(actionBuffer);
 
         if(spacePtr == nullptr){
+
+            /*
+             * ACTION EXIT
+             * */
             if(strcmp(actionBuffer, ACTION_EXIT)==0){
-                cout<<"bye!"<<endl;
+
 
                 run_flag=0;
 
             }
 
+            /*
+             * ACTION COUNT(v)
+             * */
             if(strcmp(actionBuffer,ACTION_COUNT)==0){
                 int result;
                 result = myHash->getTotalVote();
                 cout<<"total number of votes registered: "<<result<<endl;
             }
 
+            /*
+             * ACTION perc
+             * */
             if(strcmp(actionBuffer,ACTION_PERC)==0){
                 int total=0;
                 int voteCount = 0;
@@ -136,7 +155,7 @@ int main( int argc, char **argv ) {
             }
 
 
-            /*ACTION O: OUTPUT ZIPCODE IN DECS ORDER BY PEOPLE NUM
+            /*ACTION o: OUTPUT ZIPCODE IN DECS ORDER BY PEOPLE NUM
              * */
             if(strcmp(actionBuffer,ACTION_O)==0){
                 posCodeList * listPtr = myHash->getListPointer();
@@ -146,11 +165,12 @@ int main( int argc, char **argv ) {
         }
 
 
+        // if command contain space, need to read parameters
         if(spacePtr != nullptr){
 
 
 
-            //readPtr indicates the first occurence of space in the command
+            //readPtr indicates the first occurrence of space in the command
             readPtr = strchr(actionBuffer,' ');
 
 
@@ -172,30 +192,41 @@ int main( int argc, char **argv ) {
                 strncpy(file,readPtr+1,sizeof(file));
                 cout<<file<<endl;
                 int RIN;
-                int result;
+
 
                 FILE * fp;
-                char line[12] ;
+                char line[50] ;
                 fp = fopen(file,"r");
-                size_t len =0;
-                ssize_t read;
+
 
                 if(fp == nullptr){
                     cout<<"file not found"<<endl;
                 }
                 else{
-                    while(fgets(line,10,fp)!=NULL){
-//                        cout<<line<<endl;
-                        RIN = atoi(line);
+//                    while(fgets(line,10,fp)!=NULL){
+//
+//                        RIN = atoi(line);
+//                        myHash->doVote(RIN);
+//
+//                    }
+
+                    while(fgets(line,50,fp)!=NULL){
+                        pch = strtok(line," ");
+                        //RIN is *pch
+                        RIN = atoi(pch);
                         myHash->doVote(RIN);
 
                     }
+
+
+
 
                 }
             }
 
 
-            /*ACTION: Z <zipcode>
+            /*
+             * ACTION: Z <zipcode>, list the number of voted people of the given zipcode
              * */
             if(strcmp(action,ACTION_ZIP)==0){
                 char key[10]="";
@@ -207,7 +238,12 @@ int main( int argc, char **argv ) {
                 posCodeList * listPtr = myHash->getListPointer();
                 if(listPtr->isEmpty() !=0){
                     posNode * nodePtr = listPtr->findNode(lookUpZip);
-                    nodePtr->showVoterList();
+                    if(nodePtr!= nullptr){
+                        nodePtr->showVoterList();
+
+                    }else{
+                        cout<<"no such zip code"<<endl;
+                    }
                 }
                 else{
                     cout<<"there is no people voted at this time"<<endl;
@@ -217,17 +253,21 @@ int main( int argc, char **argv ) {
             }
 
 
-            /*case: operation l <key>
+            /*
+             * case: operation l <key>, LOOK UP a voter with given key as RIN
              * */
             if(strcmp(action,ACTION_LOOKUP)==0){
                 // get search key
-                //malloc space
                 char key[10] = "";
+
                 //call helper function getParam
+                //the returned paramPtr would be used to help check the input
                 char * paramPtr = Helper->findParam(readPtr);
 
                 //call lookup() function
                 int lookUpKey;
+
+                //use translateKey to make sure there are no extra params. We only need an integer key
                 lookUpKey = Helper->translateKey(paramPtr,readPtr,key,paramIndex);
                 if(lookUpKey != -1){
                     int hashSize = myHash->getSize();
@@ -343,7 +383,7 @@ int main( int argc, char **argv ) {
             if(strcmp(action,ACTION_REGISTER)==0){
                 char * param[16];
                 int i=0;
-                int result;
+
                 int key;
                 strncpy(tempBuffer,readPtr,sizeof(tempBuffer));
 
@@ -358,22 +398,17 @@ int main( int argc, char **argv ) {
                 myHash->doVote(key);
             }
         }
-        free(tempBuffer);
+
+        //on finishing this command cycle, free all the temporary buffer
+//        free(tempBuffer);
         free(actionBuffer);
         free(action);
 }
 
+    // on exiting the program, free the hash table
 
-
-
-
-
-
-        // depend on the operation specified before the first empty space
-
-
-
-
+    cout<<"releasing memory at location "<<&myHash<<endl;
+    cout<<"bye!"<<endl;
     delete(myHash);
     return 0;
 

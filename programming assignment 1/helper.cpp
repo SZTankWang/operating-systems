@@ -9,7 +9,9 @@
 #include <iostream>
 
 using namespace std;
+
 /*
+ * function: parse command
  * return: 0 for command without a space; 1 for command with space
  * */
 char* helper::parseCommand(char *bufferPtr) {
@@ -40,6 +42,14 @@ char *helper::findParam(char *bufferPtr) {
     }
 }
 
+
+/*
+ * function: translateKey.
+ * Description: translate a string represented integer into integer form
+ * params: paramPtrArg: indicate the next space in the string; readPtr: pointer to the occrrence of first space
+ * keyArr: buffer, used to hold key character; paramIndex: help us traverse through the parameter
+ *
+ * */
 int helper::translateKey(char *paramPtrArg, char * readPtrArg, char *keyArr, int paramIndex) {
     if(paramPtrArg!= nullptr){
         cout<<"having unknown params! "<<endl;
@@ -59,13 +69,19 @@ int helper::translateKey(char *paramPtrArg, char * readPtrArg, char *keyArr, int
 
 //        cout<<"\nsearching for RIN:"<<keyArr<<endl;
         int result = atoi(keyArr);
-        cout<<result<<endl;
+//        cout<<result<<endl;
         return result;
     }
 
     return 0;
 }
 
+/*
+ * function getNumOfLine
+ * Description: return the number of line of a given file
+ * params: fileName: buffer of file name
+ * return : int
+ * */
 int helper::getNumOfLine(char * fileName) {
     FILE * fp;
     fp = fopen(fileName,"r");

@@ -67,6 +67,10 @@ voter *voter::getNextVoter() {
     return next;
 }
 
+/*
+ * function: setUpVoter
+ * Description: on inserting a voter into the hashtable, first set up all the information of this new voter
+ * */
 int voter::setUpVoter(char **arr) {
     setRIN(atoi(arr[0]));
     setLastName(arr[1]);

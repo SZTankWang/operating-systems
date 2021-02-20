@@ -9,16 +9,16 @@
 using namespace std;
 
 /*constructor function
- * description: create a new posNode with posCode ptr, voted voter num
- * params: pointer to a voted object
+ * description: create a new posNode that maintains three ptr,  voted voter num, an output flag
+ * params: int zipcode
  * */
 
 posNode::posNode(int zipCode) {
 //    voter arg = voterPtr->getVoter();
     posCode = zipCode;
     votedNum = 0;
-    voterHead = nullptr;
-    voterTail = nullptr;
+    voterHead = nullptr; //ptr to first voted DTO object
+    voterTail = nullptr; //ptr to last voted DTO object
     nextPosNode = nullptr;
     output = 0;
 }
@@ -27,6 +27,12 @@ int posNode::getPosCode() {
     return posCode;
 }
 
+
+/*
+ * function:addVoter
+ * params: pointer to new voted DTO
+ * voted DTO is not voter, it stores a pointer to a voter
+ * */
 int posNode::addVoter(voted *voterPtr) {
     //if previous list is not empty, insert at votedTail
     if(voterTail!= nullptr){
@@ -41,6 +47,11 @@ int posNode::addVoter(voted *voterPtr) {
     return 0;
 }
 
+/*
+ * function:listVoter
+ * Description: list all the voter that voted in the specific zipcode
+ * One voter per line
+ * */
 int posNode::listVoter(){
     voted * tempPtr = voterHead;
     int voterRin;
@@ -56,14 +67,27 @@ int posNode::listVoter(){
     return 0;
 }
 
+/*
+ * function getNextPosNode
+ * Description: return pointer-> next postal code node in the linked list
+ * */
 posNode *posNode::getNextPosNode() {
     return nextPosNode;
 }
 
+/*
+ * function: getVotedNum
+ * return: total number of voted people in this postal code area
+ * */
 int posNode::getVotedNum() {
     return votedNum;
 }
 
+/*
+ * function: showVoterList
+ * Description: output information of vote. First line: total number of voted people
+ * Start from second line: output each voters' RIN
+ * */
 int posNode::showVoterList() {
     int voterCount;
     voterCount = getVotedNum();
@@ -72,6 +96,11 @@ int posNode::showVoterList() {
     return 0;
 }
 
+/*
+ * function setNextPosNode
+ * Description: set up the next node in the linked list.
+ * Set the pointer nextPosNode to be posNodeArg
+ * */
 int posNode::setNextPosNode(posNode *posNodeArg) {
     nextPosNode = posNodeArg;
     return 0;

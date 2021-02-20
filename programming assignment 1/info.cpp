@@ -4,9 +4,13 @@
 
 #include "info.h"
 
+/*
+ * DTO info
+ * Description: used when querying whether a voter exists / have voted already
+ * */
 info::info(char flagArg, voter *ptrArg) {
-    flag = flagArg;
-    ptr = ptrArg;
+    flag = flagArg; //vote flag. 'Y': Voted; 'N': Not Voted
+    ptr = ptrArg; //pointer to the voter
 }
 
 

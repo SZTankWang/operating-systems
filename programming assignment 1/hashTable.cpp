@@ -9,17 +9,27 @@
 
 using namespace std;
 
+/*
+ * function: constructor
+ * params: int bucketSize: number of buckets
+ * Description: automatically initialize an array of pointers to voter objects, as well
+ * as a new linked list of postal code. The hash table also maintain a counter of num of voters
+ * */
 hashTable::hashTable(int bucketSizeArg) {
     bucketSize = bucketSizeArg;
     table = new  voter*[bucketSize] ;
-
-//    //initialize the table with nullptr of bucketSize number
-
 
     //initialize posList pointer
     posList = new posCodeList();
     voterNum=0;
 }
+
+/*
+ * function: hash
+ * params: RIN of a voter
+ * return: the hash value of key RIN
+ *
+ * */
 int hashTable::hash(int RIN) {
     int result = RIN % bucketSize;
     return result;
@@ -29,6 +39,7 @@ int hashTable::hash(int RIN) {
 
 /*function: insertVoter
  * param: voter v
+ * Description: on inserting new voter, also determining if we need a new postal code Node/
  * return: status code. 0:success; -1: failure for being duplicated
  * */
 int hashTable::insertVoter(voter * v) {
@@ -104,13 +115,16 @@ int hashTable::deleteVoter(int RIN) {
             //if current is the head of the linked list
             if(prev == nullptr){
                 table[KEY] = next;
-                free(curr);
+                delete(curr);
                 --voterNum;
                 return 0;
             }
             //else, normal case
             prev->setNextVoter(next);
-            free(curr);
+//            cout<<"debug info"<<endl;
+//            int rin = curr->getRIN();
+//            cout<<rin<<endl;
+            delete(curr);
             --voterNum;
             return 0;
         }
@@ -162,7 +176,8 @@ int hashTable::doVote(int key) {
             //create a voted object to point to this voter
             nodePtr->addVoter(newVoted);
         }
-//        //does not exist such as node, create one
+//        //does not exist such as node, create one(deprecated, now all the postal ode node
+//        should be initialized on inserting voter)
 //        else if(nodePtr== nullptr){
 //
 //            posNode * newPosNode = new posNode(newVoted);
@@ -179,7 +194,7 @@ int hashTable::doVote(int key) {
 /*function: lookUpVoter
  * Description: look up the hashtable to find a voter
  * param: RIN voter ID
- * return: pointer to actual node if exists/ nullptr if not
+ * return: Info DTO. carry pointer to actual node and vote status if exists/ nullptr if not
  * */
 info hashTable::lookUpVoter(int RIN) {
     int KEY = hash(RIN);
@@ -189,8 +204,8 @@ info hashTable::lookUpVoter(int RIN) {
     while(temp != nullptr){
         if(temp->getRIN()==RIN){
             char flag = temp->getFlag();
-            char * namePtr = temp->getFirstName();
-//            cout<<namePtr<<endl;
+//            char * namePtr = temp->getFirstName();
+
             info returnInfo = info(flag,temp);
             return returnInfo;
         }
@@ -203,20 +218,40 @@ info hashTable::lookUpVoter(int RIN) {
     return returnInfo;
 }
 
+/*
+ * function getSize
+ * return the number of voters
+ * */
 int hashTable::getSize() {
     return voterNum;
 }
 
+/*
+ * function: getTablePtr
+ * Description: return the pointer to pointers of voters
+ * return: **voter
+ * */
 voter **hashTable::getTablePtr() {
     return table;
 }
 
+/*
+ * function: getTotalVote
+ * Description: get the number of people that have voted, which could be found out by traversing
+ * the postal code linked list
+ * return : int result
+ * */
 int hashTable::getTotalVote() {
 
     int result = posList->getVotedTotalCount();
     return result;
 }
 
+/*
+ * function:getListPointer
+ * Description: return pointer to the postal code linked list
+ * return: *posCodeList
+ * */
 posCodeList *hashTable::getListPointer() {
     return posList;
 }

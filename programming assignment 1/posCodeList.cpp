@@ -9,8 +9,8 @@
 using namespace std;
 
 posCodeList::posCodeList() {
-    posNodeHead = nullptr;
-    posNodeTail = nullptr;
+    posNodeHead = nullptr; //head of postal code list
+    posNodeTail = nullptr; // tail of postal code list
     posNodeNum = 0;
 }
 
@@ -46,6 +46,12 @@ int posCodeList::addNewPosNode(posNode *posNodeArg) {
     return 0;
 }
 
+/*
+ * function: addNewPosCode (NEW)
+ * Description: directly insert new postal ode node at the end of current linked list
+ * if current linked list is empty, set both head and tail to be posNodeArg
+ *
+ * */
 
 int posCodeList::addNewPosNodeAlt(posNode *posNodeArg){
     if(posNodeTail!= nullptr){
@@ -60,12 +66,6 @@ int posCodeList::addNewPosNodeAlt(posNode *posNodeArg){
 }
 
 
-/*function: voteCountByPlace
- * not implemented
- * */
-int posCodeList::voteCountByPlace() {
-    return 0;
-}
 
 /*function: findNode
  * Description: find out if a specific postal code node already exists
@@ -106,6 +106,11 @@ int posCodeList::getVotedTotalCount() {
     return total;
 }
 
+/*
+ * function: isEmpty
+ * Description: if current postal code list has no node, return 0; else, return -1
+ * */
+
 int posCodeList::isEmpty() {
     if(posNodeNum!=0){
         return -1;
@@ -121,8 +126,6 @@ int posCodeList::isEmpty() {
  * output: zipcode | number of votes
  * */
 void posCodeList::outputDesc() {
-    posNode * headPtr = posNodeHead;
-    posNode * tailPtr = posNodeTail;
     posNode * temp = posNodeHead;
 
     posNode * memo;
@@ -146,6 +149,7 @@ void posCodeList::outputDesc() {
             temp = temp->getNextPosNode();
 
         }
+        //set up the output flag of the local maximum node
         memo->setOutput();
         int zip = memo->getPosCode();
         int vote = memo->getVotedNum();
@@ -155,7 +159,7 @@ void posCodeList::outputDesc() {
 
     }
 
-    //finished, reset all node's output flag to 1
+    //finished, reset all node's output flag to 1. Important.
     while(temp != nullptr){
         temp->reset();
         temp = temp->getNextPosNode();
