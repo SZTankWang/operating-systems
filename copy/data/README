@@ -1,0 +1,13 @@
+There 5 test ASCII text files with information
+about a single voter on each line.
+
+-- sizes of files vary from 50 (tiny) t0 100000 (large).
+
+voters50.csv
+voters500.csv
+voters5000.csv
+voters50000.csv
+voters100000.csv
+
+--
+ad1622@nyu 1/2/2021

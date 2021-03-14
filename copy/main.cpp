@@ -9,32 +9,49 @@ int main( int argc, char **argv ) {
     char * actionBuffer;
     char * action;
     char * readPtr;
-    actionBuffer = (char*)malloc(100*sizeof(char));
-    action = (char*)malloc(16*sizeof(char));
+    char exit[4] = {'e','x','i','t'};
 
     //parse command line argument
+<<<<<<< HEAD
     cout<<"file to read:"<<argv[2];
     cout<<"\n"<<"hashtable size:"<<argv[4];
+=======
+    char * filename;
+    filename = argv[3];
+    cout<<"filename: "<<*filename<<"\n";
 
     while(run_flag == 1){
-        cout<<"what do you want? "<<endl;
-        cin.getline(actionBuffer,1024,'-');
-        //Look for the space in the input
-        readPtr = strchr(actionBuffer,'\0');
+        actionBuffer = (char*)malloc(100*sizeof(char));
+        action = (char*)malloc(16*sizeof(char));
 
-        if(readPtr != NULL){
-            printf("found at %d\n",readPtr-actionBuffer+1);
-            strncpy(action,actionBuffer,readPtr-actionBuffer);
-            if(strcmp(action,"exit")==0){
-                cout<<"the program stop here";
-                run_flag = 0;
-                free(actionBuffer);
-                free(action);
-            };
-        };
+        cout<<"what do you want?\n "<<endl;
+        cin.getline(actionBuffer,1024);
+
+        if(strcmp(actionBuffer, exit)==0){
+            cout<<"bye!";
+            free(actionBuffer);
+            free(action);
+            run_flag=0;
+            break;
+        }
+        //if not exit, Look for the space in the input
+        readPtr = strchr(actionBuffer,' ');
+
+
+        int size = readPtr-actionBuffer;
+        //extract the operation
+
+        strncpy(action,actionBuffer,size);
+        for(int i=0;i<size;i++){
+            cout<<"operation:"<<action[i];
+        }
+>>>>>>> 6c2c702995243d0de90d2e57fab37f6097299f68
+
 
         // depend on the operation specified before the first empty space
-
+        free(actionBuffer);
+        free(action);
+        run_flag =0;
     }
     free(actionBuffer);
     free(action);

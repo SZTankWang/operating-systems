@@ -7,18 +7,21 @@
 
 #include "posNode.h"
 #include "voter.h"
+
 /*class posCodeList
  * description: a linked list, keep reference of posNodes
  * */
 class posCodeList {
 private:
     posNode * posNodeHead;
+    posNode * posNodeTail;
     int posNodeNum;
 public:
-    posCodeList(posNode* posNodeArg);
+    posCodeList();
     int addNewPosNode(posNode*posNodeArg);
     int voteCountByPlace();
 
+    posNode * findNode(int zip);
 };
 
 

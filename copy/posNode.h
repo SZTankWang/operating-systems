@@ -6,21 +6,26 @@
 #define CODING_1_POSNODE_H
 
 #include "voter.h"
-
+#include "voted.h"
 class posNode {
 private:
     int * posCode;
-    voter * voterHead;
+    int votedNum;
+    voted * voterHead;
+    voted * voterTail;
     posNode * nextPosNode;
+
 public:
-    posNode(voter*voterPtr);
+    posNode(voted*voterPtr);
     int getPosCode();
     int listVoter();
-    int addVoter(voter * voterPtr);
+    int addVoter(voted * voterPtr);
     posNode * getNextPosNode();
     int setNextPosNode(posNode*posNodeArg);
     int getVotedNum();
     int showVoterList();
+
+    int deleteVotedRecord(int RIN);
 };
 
 

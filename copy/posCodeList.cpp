@@ -6,11 +6,12 @@
 #include <iostream>
 #include "posCodeList.h"
 #include "voter.h"
-
+#include "posNode.h"
 using namespace std;
 
-posCodeList::posCodeList(posNode * posNodeArg) {
+posCodeList::posCodeList() {
     posNodeHead = nullptr;
+    posNodeTail = nullptr;
     posNodeNum = 0;
 }
 
@@ -31,13 +32,17 @@ int posCodeList::addNewPosNode(posNode *posNodeArg) {
 
         if(tempPtr->getNextPosNode()== nullptr){
             tempPtr->setNextPosNode(posNodeArg);
+            posNodeNum++;
             return 0;
         }
         tempPtr = tempPtr->getNextPosNode();
 
     }
 
-    tempPtr = posNodeArg;
+    //list is empty, then add in the first node
+    posNodeHead=posNodeArg;
+    posNodeTail=posNodeArg;
+    posNodeNum++;
     return 0;
 }
 
@@ -47,4 +52,26 @@ int posCodeList::addNewPosNode(posNode *posNodeArg) {
  * */
 int posCodeList::voteCountByPlace() {
     return 0;
+}
+
+/*function: findNode
+ * Description: find out if a specific postal code node already exists
+ * params: int zip: postal code
+ * return : exists: pointer to that node; no: return nullptr
+ * */
+posNode *posCodeList::findNode(int zip) {
+    posNode * curr = posNodeHead;
+    //if posCodeList is currently empty: (this would be handled in the outer logic, not here)
+
+
+    while(curr!= nullptr){
+        if(curr->getPosCode()==zip){
+            //found
+            return curr;
+        }
+        curr->getNextPosNode();
+    }
+    //not found
+    return nullptr;
+
 }
