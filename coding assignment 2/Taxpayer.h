@@ -7,8 +7,8 @@ class Taxpayer{
 		char * firstName;
 		char * lastName;
 		int numOfDepd;
-		int income;
-		int posCode;
+		double income;
+		int  posCode;
 
 	public:
 		Taxpayer();
@@ -21,8 +21,8 @@ class Taxpayer{
 		void setLastName(char * arg);
 		int getNumOfDepd();
 		void setNumOfDepd(int arg);
-		int getIncome();
-		void setIncome(int arg);
+		double getIncome();
+		void setIncome(double arg);
 		int getPosCode();
 		void setPosCode(int arg);
 };

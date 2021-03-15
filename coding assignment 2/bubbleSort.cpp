@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <time.h>
 #include <sys/stat.h>
+#include <sys/times.h>
 #include <fcntl.h>
 #include <cstdio>
 #include <ostream>
@@ -24,8 +26,8 @@ void catStrWithSpace(char * dest, char * src){
 
 
 char * joinPayerInfo(Taxpayer * payer){
-    char * temp = (char *)malloc(sizeof(char)*128);
-    char RID[64];
+    char * temp = (char *)malloc(sizeof(char)*256);
+    char RID[16];
     int RID_INT = payer->getRid(); 
     sprintf(RID,"%d",RID_INT);
     strcpy(temp,RID);
@@ -39,14 +41,15 @@ char * joinPayerInfo(Taxpayer * payer){
     catStrWithSpace(temp,depd);
 
     char income[16];
-    int income_INT = payer->getIncome();
-    sprintf(income,"%d",income_INT);
+    double income_INT = payer->getIncome();
+    sprintf(income,"%f",income_INT);
     catStrWithSpace(temp,income);
 
     char posCode[16];
     int pos_INT = payer->getPosCode();
+    // cout<<"*****INSIDE joinInfo<<<<poscode is "<<pos_INT<<endl;
     sprintf(posCode,"%d",pos_INT);
-
+    catStrWithSpace(temp,posCode);
     //add newline character at the end
     strcat(temp,"\n");
 
@@ -57,30 +60,40 @@ char * joinPayerInfo(Taxpayer * payer){
 
 
 void swap(Taxpayer * ptr1, Taxpayer * ptr2){
-    char * temp_first = (char*)malloc(sizeof(char)*16);
-    char * temp_last = (char*)malloc(sizeof(char)*16);
-    
-	Taxpayer * temp = new Taxpayer;
-    //copy name
-    strcpy(temp_first,ptr1->getFirstName());
-    temp->setFirstName(temp_first);
+    // cout<<"******INSIDE SWAP*****"<<endl;
+ //    char * temp_first = (char*)malloc(sizeof(char)*16);
+ //    if(temp_first==NULL){
+ //        cout<<"MALLOC ERROR ON 63"<<endl;
+ //    }
+ //    char * temp_last = (char*)malloc(sizeof(char)*16);
+ //    if(temp_first==NULL){
+ //        cout<<"MALLOC ERROR ON 67"<<endl;
+ //    }
+	// Taxpayer * temp = new Taxpayer;
+ //    //copy name
+ //    strcpy(temp_first,ptr1->getFirstName());
+ //    temp->setFirstName(temp_first);
 
-    strcpy(temp_last,ptr1->getLastName());
-    temp->setLastName(temp_last);
+ //    strcpy(temp_last,ptr1->getLastName());
+ //    temp->setLastName(temp_last);
 
-    temp->setPosCode(ptr1->getPosCode());
-    temp->setNumOfDepd(ptr1->getNumOfDepd());
-    temp->setIncome(ptr1->getIncome());
-    temp->setRid(ptr1->getRid());
+ //    temp->setPosCode(ptr1->getPosCode());
+ //    temp->setNumOfDepd(ptr1->getNumOfDepd());
+ //    temp->setIncome(ptr1->getIncome());
+ //    temp->setRid(ptr1->getRid());
 
-    
+    Taxpayer * temp = (Taxpayer*)malloc(sizeof(Taxpayer));
+    *temp = *ptr1;
 	*ptr1 = *ptr2;
 	*ptr2 = *temp;
+    free(temp);
+    // delete temp;
 }
 
 
 //sortAttr: attribute to sort; sortFlag:0:ASCE; 1: DESC
 int doSorting(Taxpayer ** payerList,int sortAttr,int sortFlag,int start,int end, int swapped){
+    // cout<<"***********INSIDE DO SORTING*******"<<endl;
     if(sortFlag==0){
 
         switch(sortAttr){
@@ -212,6 +225,7 @@ void BubbleSort(Taxpayer ** payerList,int length,int flag,int sortAttr){
 	int swapped = 0;
     int start;
     int end;
+    // cout<<"*********INSIDE BUBBLE********"<<endl;
 	while(1){
 		for(int i=0;i<length-1;i++){
             start = i;
@@ -220,7 +234,8 @@ void BubbleSort(Taxpayer ** payerList,int length,int flag,int sortAttr){
 
 		}
 		if(swapped==0){
-			break;
+			// cout<<"*************SWAPPED IS ZERO**********"<<endl;
+            break;
 
 		}
 		else{
@@ -230,10 +245,160 @@ void BubbleSort(Taxpayer ** payerList,int length,int flag,int sortAttr){
 	}
 }
 
-//invoke by command: ./bubble -f <fileName> -o <order> -a <attrNum> -s <start> -e <end>
+
+void insertionSort(Taxpayer ** payerList, int length, int flag, int sortAttr){
+    int i,j;
+    Taxpayer * key;
+    for(i=1;i<length;i++){
+        key = payerList[i];
+        j=i-1;
+
+        if(flag == 0){
+                //ASEC
+            switch(sortAttr){
+
+            case 1:
+            {
+
+                 //sort RID
+                while(j>=0 && payerList[j]->getRid()>key->getRid()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;
+                break;     
+            }
+
+
+            case 4:
+            {
+                 //sort num of depd
+                while(j>=0 && payerList[j]->getNumOfDepd()>key->getNumOfDepd()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;
+                break;         
+            }
+
+
+            case 5:
+            {
+                 //sort income
+                while(j>=0 && payerList[j]->getIncome()>key->getIncome()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;
+                break;         
+            }
+
+
+            case 6:
+            {
+                 //sort posCode
+                while(j>=0 && payerList[j]->getPosCode()>key->getRid()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;     
+                break;     
+            }
+
+
+            default:
+                cout<<"invalid sorting attribute!"<<endl;
+                break; 
+            }
+
+        }
+         else if(flag == 1){
+        //SORT DESC
+            switch(sortAttr){
+
+            case 1:
+            {
+
+                 //sort RID
+                while(j>=0 && payerList[j]->getRid()<key->getRid()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;
+                break;     
+            }
+
+
+            case 4:
+            {
+                 //sort num of depd
+                while(j>=0 && payerList[j]->getNumOfDepd()<key->getNumOfDepd()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;
+                break;         
+            }
+
+
+            case 5:
+            {
+                 //sort income
+                while(j>=0 && payerList[j]->getIncome()<key->getIncome()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;
+                break;         
+            }
+
+
+            case 6:
+            {
+                 //sort posCode
+                while(j>=0 && payerList[j]->getPosCode()<key->getRid()){
+                    payerList[j+1] = payerList[j];
+                    j = j-1;
+
+                }
+                payerList[j+1] = key;     
+                break;     
+            }
+
+
+            default:
+                cout<<"invalid sorting attribute!"<<endl;
+                break; 
+            }
+
+        }
+
+    }
+}
+//invoke by command: ./bubble -f <fileName> "-algo",<i/b>,"-ppid",char_ppid, -o <order> -a <attrNum> -s <start> -e <end>
 int main(int argc,char ** argv){
+    //initialize time computing staff
+    // clock_t tStart = clock();
+    double t1,t2,cpu_time;
+    struct tms tb1,tb2;
+    double ticspersec;
+    int i,sum=0;
+
+    ticspersec = (double)sysconf(_SC_CLK_TCK);
+    t1 = (double)times(&tb1);
+
+
+
 	char * fileName;
     char * fifoName;
+    char * sort_algo;
 	int attrNum;
 	int order=0; //0 by default
 	int startIndex;
@@ -243,13 +408,17 @@ int main(int argc,char ** argv){
 
     //register ctrl+C signal handler
     signal(SIGINT,exitHandler);
-    signal(SIGSEGV,exitHandler);
+    // signal(SIGSEGV,exitHandler);
     // cout<<"new sorter"<<endl;
 
 	for(int i=0;i<argc;i++){
 		if(strcmp(argv[i],"-f")==0){
 			fileName = argv[i+1];
 		}
+
+        if(strcmp(argv[i],"-algo")==0){
+            sort_algo = argv[i+1];
+        }
 		if(strcmp(argv[i],"-o")==0){
 			if(strcmp(argv[i+1],"d")==0){
 				order = 1;
@@ -279,12 +448,15 @@ int main(int argc,char ** argv){
 	}
 
 	//open file, read taxpayer
-	int n = endIndex-startIndex+1;
-    cout<<"start line is "<<startIndex<<" and end Index is "<<endIndex<<endl;
-    cout<<"number of payers (should be ?)"<<n<<endl;
+	int  n = endIndex-startIndex+1;
+    // cout<<"start line is "<<startIndex<<" and end Index is "<<endIndex<<endl;
+    // cout<<"number of payers (should be ?)"<<n<<endl;
 
     // cout<<"num of record for sorter"<<this_pid<<"is "<<n<<endl;
     Taxpayer ** payerList = (Taxpayer**)malloc(sizeof(Taxpayer*)*n);//store a list of ptr to payers
+    if(payerList == NULL){
+        cout<<"MALLOC FAILURE ON LINE 294"<<endl;
+    }
 
     FILE *fp = fopen(fileName,"r") ;
     if(fp==NULL){
@@ -372,7 +544,7 @@ int main(int argc,char ** argv){
                 {
 
 
-                    double income = atof(token);
+                    double income = strtod(token,NULL);
                     newPayer->setIncome(income);
                     break;
 
@@ -421,6 +593,7 @@ int main(int argc,char ** argv){
 
     }
 
+    // cout<<"*****TEST PAYER ****is ******* "<<payerList[n-1]->getFirstName()<<endl;
     // int length_list = sizeof(payerList)/sizeof(payerList[0]);
 
     // cout<<"sorter "<<this_pid<<"has "<<length_list-1<<"payers!"<<endl;
@@ -433,8 +606,17 @@ int main(int argc,char ** argv){
     fclose(fp);
 
     // do sorting
-    BubbleSort(payerList,endIndex-startIndex+1,order,attrNum);
+    // cout<<"**********BEFORE BUBBLE SORT**********"<<endl;
 
+    if(strcmp(sort_algo,"b")==0){
+        cout<<"********Using bubble sort********"<<endl;
+        BubbleSort(payerList,endIndex-startIndex+1,order,attrNum);
+    }
+    if(strcmp(sort_algo,"i")==0){
+        cout<<"********Using Insertion sort********"<<endl;
+
+        insertionSort(payerList,endIndex-startIndex+1,order,attrNum);
+    }
     //use a buffer to read all the data
     char * fifo_buffer = (char *)malloc(sizeof(char)*(byteCount+n));
 
@@ -443,14 +625,15 @@ int main(int argc,char ** argv){
         exit(-1);
 
     }
-
+    // cout<<"**********AFTER BUBBLE SORT**********"<<endl;
 
 
     
     // cout<<"we are now in the join payerinfo part"<<endl;
 
     // cout<<"trying to access the first payer"<<endl;
-    char * test_temp = payerList[n-1]->getLastName();
+    // int test_temp = payerList[n-1]->getPosCode();
+    // cout<<"*******FYI, poscode IS*****  "<<test_temp<<endl;
     // cout<<"test last name "<<test_temp<<endl;
 
     for(int a=0;a<n;a++){
@@ -461,6 +644,7 @@ int main(int argc,char ** argv){
         else{
             strcat(fifo_buffer,temp);
         }
+        free(temp);
         
 
 
@@ -472,8 +656,8 @@ int main(int argc,char ** argv){
     if(fd == -1){
         cout<<"fifo opened wrongly, fifo path name is "<<fifoName<<endl;
     }
-    cout<<" trying to write to fifo"<<fifoName<<"in 3 seconds..."<<endl;
-    sleep(3);
+    // cout<<" trying to write to fifo"<<fifoName<<"in 3 seconds..."<<endl;
+    // sleep(3);
     // cout<<"content from sorter"<<fifoName<<""<<fifo_buffer<<endl;
 
     write(fd,fifo_buffer,byteCount+n);
@@ -493,6 +677,25 @@ int main(int argc,char ** argv){
 
     //send SIGUSR1 to root
     kill(ppid,10);
+
+    t2 = (double)times(&tb2);
+    //open pipe again, send time info
+    sleep(2);
+    fd = open(fifoName,O_WRONLY);
+    if(fd == -1){
+        cout<<"fifo opened wrongly, fifo path name is "<<fifoName<<endl;
+    }
+
+    char * stat = (char*)malloc(sizeof(char)*128);
+    sprintf(stat,"%lf",(t2-t1)/ticspersec);
+    // cout<<"******************sorter trying to write stat *********"<<stat<<endl;
+    write(fd,stat,128);
+
+    close(fd);
+
+    float statResult = (t2-t1)/ticspersec;
+
+    // cout<<"*******RUN TIME FOR SORTER******"<<endl<<"*****"<<statResult<<"*********"<<endl;
 
 	return 0;
 }

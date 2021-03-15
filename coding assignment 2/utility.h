@@ -6,22 +6,6 @@
 
 
 /*
-function:getMaxFd
-Description: open fifos, and return the maximal file descriptor for 
-select function
-*/
-int getMaxFd(myfifo ** fifoList);
-
-
-/*
-function:setFdToSet
-Description: add a fifo's file descriptor to the watching set of select function
-
-*/
-void setFdToSet(myfifo ** fifoList,fd_set * setPtr);
-
-
-/*
 function: joinPayerInfo
 join all the info fields of a taxpayer into a char buffer for writing in the fifo
 */

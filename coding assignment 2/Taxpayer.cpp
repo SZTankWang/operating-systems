@@ -25,11 +25,11 @@ void Taxpayer::setRid(int RID){
     this->RID = RID;
 }
 
-int Taxpayer::getIncome(){
+double Taxpayer::getIncome(){
     return this->income;
 }
 
-void Taxpayer::setIncome(int income){
+void Taxpayer::setIncome(double income){
     this->income = income;
 }
 

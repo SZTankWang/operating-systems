@@ -1,0 +1,25 @@
+CS-UH 3010
+Zhenming Wang
+zw1806
+
+{Summary of software architecture}
+
+Executables: I have two executables for this project, {myhie} and {sorter}. {myhie} contains the code for root, coord and merger; {sorter} contains code for sorters using either of two sorting algorithms. 
+
+Classes & files: main.cpp, myfifo.cpp, Taxpayer.cpp, sorter.cpp algorithm.cpp(for holding sorting algos) utility.cpp(for holding helper functions)
+
+Two Sorting Algorithm: I use bubble sort and insertion sort.
+
+_______________________________________
+
+
+{Details about implementation}
+Sorting step: First, I create a fifo for each sorter, and then I create user-defined number of sorters, passing them each a certain range of records to sort. After each sorter finish with sorting their own share, they start to open up the write end of fifo. At the merger side, the merger would continuously use `poll` to query the status of a set of file descriptors of fifos. Whenever a fifo is ready to perform read operation, the merger would begin to read from the named pipe. When the `poll` receive a signal of POLLHUP, which signifies the writing end of pipe getting closed, the merger would know that it has finished with reading from one fifo and close the reading end of the fifo. 
+Now that the merger has the individual sorting efforts of each sorter, it still need to perform one more time of sorting, since the data sorted by each sorter are of totally random value. Therefore, the merger would first write contents it just read from each fifo into an output file specified by the writer. Then the merger open the file, read the content, and perform similar sorting steps as a sorter does. After this step, the final result is getting written to the output.txt, and this signifies the end of the whole sorting process.
+	
+Communicating using named pipe: It is required that each sorter would pass on their time statistic to the merger. Therefore, I achieved this through opening and closing each fifo twice. After the sorter finishes sending sorting result, it close the fifo. Next, the sorter open up the fifo again, and send their time statistic through the pipe. I made a design choice here that each sorter, before they open up the named pipe again, sleeps for 2 second (or maybe less). This is because I notice strange behaviours happening if they open up the fifo right after closing it. The merger's first polling block, which is for reading sorting result, would keep on looping and never quit. However, if I put each sorter to sleep for a short time, the fifo is opened again and time statistics are sent successfully.
+
+    
+
+
+
