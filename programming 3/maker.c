@@ -33,11 +33,11 @@ int main(int argc,char ** argv){
 		}	
 	}
 
-	printf("MKR %d\n",mkrID);
+	// printf("MKR %d\n",mkrID);
 
 	INFO * shm;
 	shm = shmat(shmid,NULL,0);
-	printf("number of salad %d\n",shm[0].salads_to_go);
+	// printf("number of salad %d\n",shm[0].salads_to_go);
 
 	//seeding random number
 
@@ -71,6 +71,7 @@ int main(int argc,char ** argv){
 		float newly_used[3];
 		newly_used[0]= shm[mkrID+1].bench[0];
 
+
 		newly_used[1] = shm[mkrID+1].bench[1];
 
 		//tell chef that maker has got the ingredients
@@ -85,6 +86,9 @@ int main(int argc,char ** argv){
 
 		newly_used[2] = weight;
 
+		printf("MKR %d: I used %s for %f, %s for %f, %s for %f\n", mkrID,shm[mkrID+1].ingres[0],\
+			newly_used[0],shm[mkrID+1].ingres[1],newly_used[1],\
+			shm[mkrID+1].ingres[2],newly_used[2] );
 		//record statistic in ingres_used array
 		for(int i=0;i<3;i++){
 			shm[mkrID+1].ingres_used[i] += newly_used[i];
@@ -115,17 +119,6 @@ int main(int argc,char ** argv){
 		
 	}
 
-
-	int detach;
-	detach = shmdt(shm);
-	if(detach == 0){
-		printf("MKR %d: I made %d salads \n",mkrID,count);
-		printf("MKR %d detached shm\n",mkrID);
-	}
-	else{
-		perror("detach error");
-		exit(-1);
-	}
 
 	return 0;
 

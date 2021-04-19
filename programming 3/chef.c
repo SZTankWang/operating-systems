@@ -21,7 +21,7 @@ int main(int argc, char ** argv){
 	float chefTIme;
 
 	//array of ingredient info. mkr1: (1,3); mkr2: (1,2); mkr3: (2,3)
-	int arr[6] = {1,1,2,3,2,3};
+	int arr[9] = {1,1,2,3,2,3,2,3,1};
 
 	char * ingre_seq[3];
 	ingre_seq[0] = "tomato";
@@ -111,12 +111,11 @@ int main(int argc, char ** argv){
     	}
 
     	//initialize ingredient info
+    	for(int j=0;j<3;j++){
+	    	memcpy(shm[i+1].ingres[j], ingre_seq[arr[i+3*j]-1],32);	
 
-    	memcpy(shm[i+1].ingres[0], ingre_seq[arr[i]-1],32);	
+    	}
 
-    	memcpy(shm[i+1].ingres[1], ingre_seq[arr[i+3]-1],32);	
-
-    	memcpy(shm[i+1].ingres[2], ingredients[i],32);	
 
     	//tell each user the standard usage of the one material that they always have
     	shm[i+1].ingres_ideal[2] = ideal_usage_alt[i];
@@ -175,14 +174,14 @@ int main(int argc, char ** argv){
 
 		choice = rand()%3;
 
-		printf("CHEF: The choice is MKR %d", choice);
+		printf("CHEF: The choice is MKR %d\n", choice);
 
 		//pick ingredients and put at the chosen maker's bench
 		int ideal;
 		for(int i=0;i<2;i++){
 			scalar = (float)rand()/(float)(RAND_MAX);
 
-			ideal = ideal_usage[arr[choice + i*3]];
+			ideal = ideal_usage[arr[choice + i*3]-1];
 			
 			shm[choice+1].bench[i] = 0.8*ideal + scalar*(1.2*ideal - 0.8*ideal); 			
 		}
@@ -192,6 +191,7 @@ int main(int argc, char ** argv){
 
 
 		//then wait for user to get ready
+		printf("chef waiting for MKR %d to pick ingredients\n",choice);
 		sem_wait(&shm[choice+1].mkr_ready);
 		printf("MKR %d has got the ingredients\n",choice );
 
@@ -209,6 +209,24 @@ int main(int argc, char ** argv){
 
     int status;
     while((wait(&status))!=-1 );
+
+    //chef read maker statistic: 
+    int used_counts[3] = {0,0,0};
+
+    for(int i=0;i<3;i++){
+    	//access mkr statistic by index
+    	INFO stat = shm[i+1];
+    	for(int j=0;j<3;j++){
+    		//determine which type of vege?
+    		int type = arr[i+j*3];
+    		//check in case
+    		printf("MKR %d used %s for %f grams\n",i,ingre_seq[type-1], stat.ingres_used[j]);
+    		// used_counts[type-1] += stat.ingres_used[j];
+    	}
+
+    }
+
+
 
     shmdt(shm); 
 

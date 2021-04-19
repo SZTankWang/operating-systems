@@ -10,7 +10,7 @@ typedef struct info
 	sem_t mkr_ready; // used to show whether maker is ready to get new batch of ingredients
 	float bench[2]; //hold 2 ingredients given by the chef
 	char ingres[3][50];
-	int ingres_used[3];
+	float ingres_used[3]; //record amount of ingredients used by a maker
 	int ingres_ideal[3];
 }INFO;
 
