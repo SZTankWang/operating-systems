@@ -4,4 +4,6 @@
 #include "info.h"
 
 int detach(INFO * shm, int mkrID);
+
+double timing(void);
 #endif 
