@@ -2,16 +2,16 @@
 #include "myUtil.h"
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include <sys/times.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <semaphore.h>
 #include <time.h>
+#include <sys/time.h>
 #include <stddef.h>
 
-
+double timing(struct timeval before,struct timeval after, int mkrID);
 
 int main(int argc,char ** argv){
 	int mkrTime;
@@ -19,15 +19,16 @@ int main(int argc,char ** argv){
 	int shmid;
 	int count=0;
 
-	double time_spent_waiting=0;
-	long double time_elapsed;
-	float time_spent_making;
+	double time_spent_waiting=0.;
+	double time_elapsed;
+	double time_spent_making=0.;
 	double t1,t2;
 	//,ticspersec;
 	// struct tms tb1,tb2;
 	// ticspersec = (double)sysconf(_SC_CLK_TCK);
 
 	struct timeval before,after,result; //for function gettimeofday
+
 
 	int ingre_used[3];
 
@@ -65,13 +66,16 @@ int main(int argc,char ** argv){
 		sem_wait(&shm[mkrID+1].pick_lock);
 	
 		//end waiting, get elapsed time
-		gettimeofday(&after,NULL);
+		// gettimeofday(&after,NULL);
 		// elapse = difftime(after.tv_sec,before.tv_sec);
 		// time_spent_waiting += elapse;
 		printf("**************\n");
-		time_elapsed = timing(before);
+		gettimeofday(&after,NULL);
+		timersub(&after, &before, &result);
+
+		time_elapsed = result.tv_sec + result.tv_usec/1e6;
 		time_spent_waiting += time_elapsed;
-		printf("MKR %d: (LINE 67) ANOTHER WAITING FOR CHEF FOR %Lf seconds\n",mkrID,time_elapsed);
+		printf("MKR %d: (LINE 67) ANOTHER WAITING FOR CHEF FOR %f seconds\n",mkrID,time_elapsed);
 		printf("**************\n");
 
 
@@ -88,11 +92,16 @@ int main(int argc,char ** argv){
 			if(from_waiting==1){
 				//if the maker has come from previous round of waiting for ingredient
 				//end waiting, get elapsed time
+				// gettimeofday(&after,NULL);
+
 				gettimeofday(&after,NULL);
-				time_elapsed = timing(before);
+				timersub(&after, &before, &result);
+
+				time_elapsed = result.tv_sec + result.tv_usec/1e6;;
 				time_spent_waiting += time_elapsed;
+				
 				printf("**************\n");
-				printf("MKR %d:(LINE 85)  ANOTHER WAITING FOR CHEF FOR %Lf seconds\n",mkrID,time_elapsed);
+				printf("MKR %d:(LINE 85)  ANOTHER WAITING FOR CHEF FOR %f seconds\n",mkrID,time_elapsed);
 				printf("**************\n");
 
 			}
@@ -236,11 +245,21 @@ int main(int argc,char ** argv){
 			
 		// }
 
-		sleep(time_per_salad);
+		time_per_salad *= 1e6;
 
+		//set timer
+		gettimeofday(&before,NULL);
+		usleep(time_per_salad);
+		gettimeofday(&after,NULL);
+		// timersub(&after, &before, &result);
+		// double salad_time = (double)result.tv_sec + (double)result.tv_usec/1e6;
+		double salad_time = timing(before,after,mkrID);
+
+
+		
 		count++;
 		printf("********************\n");
-		printf("MKR %d has made %d salads ...\n",mkrID, count);
+		printf("MKR %d has made %d salads ... This one took %f seconds\n",mkrID, count,salad_time);
 
 		printf("********************\n");
 
@@ -248,7 +267,7 @@ int main(int argc,char ** argv){
 
 		//increase time_spent for salad
 
-		time_spent_making += time_per_salad;
+		time_spent_making += salad_time;
 		
 		//start timing for waiting time
 		gettimeofday(&before,NULL);

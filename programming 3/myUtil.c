@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 #include <time.h>
+#include <unistd.h>
 #include "myUtil.h"
 #include "info.h"
 
@@ -23,20 +24,13 @@ int detach(INFO * shm, int mkrID){
 
 
 //get time elapsed since last set timer
-long double timing(struct timeval before){
-	struct timeval tv;
-	double asec, desc;
-	gettimeofday(&tv,NULL);
+double timing(struct timeval before,struct timeval after, int mkrID){
+	struct timeval result;
 
-	asec = tv.tv_usec;
- 	asec /= 1e6;
- 	asec += tv.tv_sec;
+	timersub(&after, &before, &result);
 
- 	desc = before.tv_usec;
- 	desc /= 1e6;
- 	desc += before.tv_sec;
-
-	printf("INSIDE timing function: time elapsed is %Lf",(asec-desc));
-	return (asec-desc);
+	double res = (double )result.tv_sec + ((double)result.tv_usec)/1e6;
+	// printf("INSIDE timing function FOR MKR %d: time elapsed is %f\n",mkrID, res);
+	return res;
 };
 

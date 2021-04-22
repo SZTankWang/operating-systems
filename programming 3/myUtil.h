@@ -5,5 +5,5 @@
 
 int detach(INFO * shm, int mkrID);
 
-double timing(void);
+double timing(struct timeval before,struct timeval after, int mkrID);
 #endif 
