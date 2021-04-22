@@ -3,23 +3,34 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+double timing(struct timeval before);
+
 int main() {
 
-  struct timeval  tv;
-  gettimeofday(&tv, NULL);
+struct timeval tval_before, tval_after, tval_result;
 
-double begin =
-  (tv.tv_sec)  + (tv.tv_usec) / 1000 ;
+gettimeofday(&tval_before, NULL);
 
-
-useconds_t time = 1.5 * 1e6;
+// Some code you want to time, for example:
+float time = 2.35 * 1e6;
 usleep(time);
 
- gettimeofday(&tv, NULL);
+double res = timing(tval_before);
 
-double end =
-  (tv.tv_sec)  + (tv.tv_usec) / 1000 ;
 
-  printf("Execution time %f\n", end - begin);
-  return (0);
+printf("my result: %f\n",res);
 }
+
+
+
+double timing(struct timeval before){
+	struct timeval after, result;
+
+	gettimeofday(&after,NULL);
+
+	timersub(&after, &before, &result);
+
+	double res = result.tv_sec + result.tv_usec/1e6;
+	printf("INSIDE timing function: time elapsed is %f\n",res);
+	return res;
+};
