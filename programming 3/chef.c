@@ -60,11 +60,23 @@ int main(int argc, char ** argv){
     //attach shared memory
     shm = (INFO *)shmat(shmid,NULL,0);
 
+    
+    //doing some initalization start from here 
+    //************************
     //STORE AN INFO Struct in the shm
     INFO info;
     shm[0] = info;
     shm[0].salads_to_go = saladNum;
-    char mkr[5] = "MKR";
+    shm[0].counter = 0;
+
+    //try remove the public logging file, if it exists
+    if( (remove("public")) == 0){
+    	printf("shard logging file is succssefully deleted\n");
+    }else{
+    	printf("error. Maybe the file is not there");
+    }
+
+    char mkr[4] = "MKR";
     
     //declare semaphores
     int sem_status;
@@ -76,20 +88,22 @@ int main(int argc, char ** argv){
     	exit(-1);
     }
 
+	sem_status = sem_init(&shm[0].counter_lock,1,1); //salad number lock
+
+
+    if(sem_status == -1){
+    	perror("semaphore init failure");
+    	exit(-1);
+    }
+
+
+
 
     //declare semaphores for each maker
     for(int i=0;i<3;i++){
     	INFO new_info;
     	shm[i+1] = new_info;
-    	sem_status = sem_init(&shm[i+1].mkr_lock,1,0);
 
-     
-        if(sem_status == -1){
-	    	perror("semaphore init failure");
-	    	exit(-1);
-
-
-    	}
 
     	sem_status = sem_init(&shm[i+1].pick_lock,1,0);
        
@@ -144,10 +158,15 @@ int main(int argc, char ** argv){
     	//initialize logging file name for mkr
     	char index[2] ;
     	sprintf(index,"%d",i);
+
+    	//initialize empty filepath
+    	strcpy(shm[i+1].filepath,"");
     	strcat(shm[i+1].filepath,mkr);
 		strcat(shm[i+1].filepath,index);
 
-
+		//initialize shared log file path
+		strcpy(shm[i+1].sharedLog,"");
+    	strcat(shm[i+1].sharedLog,"public");
     }
     
 

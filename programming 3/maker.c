@@ -25,7 +25,6 @@ int main(int argc,char ** argv){
 	double t1,t2;
 
 	char timestamp[128]; 
-	char linesplit[64] = "*****************\n";
 
 	struct timeval before,after,result; //for function gettimeofday
 
@@ -50,10 +49,15 @@ int main(int argc,char ** argv){
 	shm = shmat(shmid,NULL,0);
 	// printf("number of salad %d\n",shm[0].salads_to_go);
 
-	printf("MKR %d: my file path is: %s\n",mkrID,shm[mkrID+1].filepath);
+	// printf("MKR %d: my file path is: %s\n",mkrID,shm[mkrID+1].filepath);
 
 	//open log file
+	FILE * file;
 	file = fopen(shm[mkrID+1].filepath,"w");
+
+	//open public log file
+	FILE * share;
+	share = fopen(shm[mkrID+1].sharedLog,"a");
 
 	//seeding random number
 
@@ -68,22 +72,23 @@ int main(int argc,char ** argv){
 	gettimeofday(&before,NULL);
 	while(1){
 		sem_wait(&shm[mkrID+1].pick_lock);
-	
+		
+		//write a split line to logs
+		writeLineSplit(file,0);
+
 		//end waiting, get elapsed time
-		// gettimeofday(&after,NULL);
-		// elapse = difftime(after.tv_sec,before.tv_sec);
-		// time_spent_waiting += elapse;
-		printf("**************\n");
+
 		gettimeofday(&after,NULL);
 
 		time_elapsed = timing(before,after,mkrID);
 		time_spent_waiting += time_elapsed;
 
 		//get timestamp
-		timestamp = timestamp();
-		printf("MKR %d: (LINE 67) ANOTHER WAITING FOR CHEF FOR %f seconds\n",mkrID,time_elapsed);
-		printf("**************\n");
+		getTimeStamp(timestamp);
+		// printf("MKR %d: (LINE 67) ANOTHER WAITING FOR CHEF FOR %f seconds\n",mkrID,time_elapsed);
 
+		//write log 
+		writeLogForWait(file,time_elapsed,timestamp,0);
 
 		//this while loop is for continuously request chef for ingredients within one \
 		round of making a salad
@@ -98,24 +103,24 @@ int main(int argc,char ** argv){
 			if(from_waiting==1){
 				//if the maker has come from previous round of waiting for ingredient
 				//end waiting, get elapsed time
-				// gettimeofday(&after,NULL);
 
 				gettimeofday(&after,NULL);
 
+				//get time stamp				
+				getTimeStamp(timestamp);
+				
 				time_elapsed = timing(before,after,mkrID);
 				time_spent_waiting += time_elapsed;
 				
-				printf("**************\n");
-				printf("MKR %d:(LINE 85)  ANOTHER WAITING FOR CHEF FOR %f seconds\n",mkrID,time_elapsed);
-				printf("**************\n");
 
+				//write to log
+				writeLogForWait(file,time_elapsed,timestamp,1);
 			}
 			
 			//check salad_to_make
 			sem_wait(&shm[0].salad_lock);
 			
 			if(shm[0].salads_to_go == 0){
-				printf("finished! maker %d made %d salads,  exits.\n",mkrID,count);
 
 				sem_post(&shm[0].salad_lock);
 
@@ -126,13 +131,17 @@ int main(int argc,char ** argv){
 
 				//detach shared memory
 				int det_result = detach(shm,mkrID);
+				
+				//write log file
+				getTimeStamp(timestamp);
+				writeLogForMkrBye(file,timestamp,count);
+
+				//close log file 
 				return 0;
 			}
 			sem_post(&shm[0].salad_lock);
 				
 			
-			//else, get ingredients, know the weight now
-			// float newly_used[3];
 
 			//run a for loop to check if any of the ingredients is still needed
 			sem_wait(&shm[mkrID+1].in_need_lock);
@@ -143,8 +152,11 @@ int main(int argc,char ** argv){
 				//clear bench
 				shm[mkrID+1].bench[j] = 0;
 
-			
-				// newly_used[j] += newly_placed;
+				//get timestamp for logging
+				strcpy(timestamp,"");
+				getTimeStamp(timestamp);
+									
+
 				disposal[j] += newly_placed;
 
 
@@ -153,12 +165,14 @@ int main(int argc,char ** argv){
 				if(disposal[j] < shm[mkrID+1].ingres_ideal[j]){
 
 					shm[mkrID+1].ingres_in_need[j] = 1;
-					printf("MKR %d: ingredient %s is not enough! JUST receive from bench: %f grams. I receive %f of %s in total \n",mkrID,shm[mkrID+1].ingres[j],\
-						newly_placed,disposal[j],shm[mkrID+1].ingres[j]);
+
+					writeLogForVege(file, timestamp, 0, newly_placed, disposal[j], shm[mkrID+1].ingres[j]);
 
 				}else{
-					printf("MKR %d: ingredient %s is enough! I got %f grams! \n",mkrID, shm[mkrID+1].ingres[j],disposal[j]);
+
 					shm[mkrID+1].ingres_in_need[j] = 0;
+					writeLogForVege(file, timestamp, 1, newly_placed, disposal[j], shm[mkrID+1].ingres[j]);
+
 				}
 
 
@@ -197,20 +211,17 @@ int main(int argc,char ** argv){
 				}
 			}
 
-			// printf("MKR %d: I used %s for %f, %s for %f, %s for %f\n", mkrID,shm[mkrID+1].ingres[0],\
-			// 	disposal[0],shm[mkrID+1].ingres[1],disposal[1],\
-			// 	shm[mkrID+1].ingres[2],disposal[2] );
-
 
 			//tell chef that maker has got the ingredients
 			sem_post(&shm[mkrID+1].mkr_ready);
 				
 
 			if(continue_to_wait == 0){
-				printf("MKR %d finishes with picking ingredients ..., weight at disposal for %s is:%f , and weight for\
-				%s is %f \n",mkrID,shm[mkrID+1].ingres[0], disposal[0],\
-				shm[mkrID+1].ingres[1], disposal[1]);
 
+				//get timestamp for logging
+				getTimeStamp(timestamp);
+
+				writeLogForIngreReport(file, timestamp,shm[mkrID+1].ingres,disposal);
 				break;
 			}
 
@@ -223,6 +234,8 @@ int main(int argc,char ** argv){
 			//reset timer
 			gettimeofday(&before,NULL);		
 			
+
+
 			sem_wait(&shm[mkrID+1].pick_lock);
 		}	
 
@@ -231,8 +244,6 @@ int main(int argc,char ** argv){
 
 
 		//generate randomness for making salad time
-		
-
 		float scalar = (float)rand()/(float)(RAND_MAX);
 		float time_per_salad = 0.8*mkrTime+ scalar*(mkrTime-0.8*mkrTime);
 
@@ -244,29 +255,48 @@ int main(int argc,char ** argv){
 			
 		}
 
-		// //clear his disposal, and restore the in_need flag;
-		// for(int j=0;j<3;j++){
-		// 	disposal[j] = 0;
-			
-		// }
+
 
 		time_per_salad *= 1e6;
 
 		//set timer
 		gettimeofday(&before,NULL);
+		
+		//edit shared variable counter, increase num of mkr busy by 1
+		sem_wait(&shm[0].counter_lock);
+		shm[0].counter ++;
+		getTimeStamp(timestamp);
+		writeCounterToLog(share,\
+			timestamp, shm[0].counter);
+
+		sem_post(&shm[0].counter_lock);
+		
+
 		usleep(time_per_salad);
 		gettimeofday(&after,NULL);
-		// timersub(&after, &before, &result);
-		// double salad_time = (double)result.tv_sec + (double)result.tv_usec/1e6;
+		getTimeStamp(timestamp);
+
 		double salad_time = timing(before,after,mkrID);
 
 
 		
 		count++;
-		printf("********************\n");
-		printf("MKR %d has made %d salads ... This one took %f seconds\n",mkrID, count,salad_time);
 
-		printf("********************\n");
+		//write to log file
+		writeLogForSalad(file, salad_time,timestamp,count);
+
+		//decrease num of mkr busy by 1
+		sem_wait(&shm[0].counter_lock);
+		if(shm[0].counter == 0){
+			printf("error occurs on shared vairable COUNTER! \n");
+		}
+		shm[0].counter --;
+		getTimeStamp(timestamp);
+		writeCounterToLog(share,\
+			timestamp, shm[0].counter);
+
+		sem_post(&shm[0].counter_lock);
+		
 
 
 
@@ -276,7 +306,10 @@ int main(int argc,char ** argv){
 		
 		//start timing for waiting time
 		gettimeofday(&before,NULL);
-		
+					
+		//write splitting line to logging file
+
+		writeLineSplit(file,1);
 	}
 
 

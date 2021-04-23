@@ -1,0 +1,37 @@
+************************
+New salad making start from here
+2021-04-23 22:19:18 : waited for chef to dispatch job for 10.503804 seconds
+2021-04-23 22:19:18 :  ingredient onion is not enough! JUST receive from bench: 29.489056 grams. I receive 29.489056 of onion in total
+2021-04-23 22:19:18 :  ingredient green_pepper is not enough! JUST receive from bench: 48.806709 grams. I receive 48.806709 of green_pepper in total
+2021-04-23 22:19:18 : waited for chef to put ingredient for 0.000081 seconds
+2021-04-23 22:19:18 : ingredient onion is enough! I got 61.732864 grams! 
+2021-04-23 22:19:18 : ingredient green_pepper is enough! I got 101.405334 grams! 
+2021-04-23 22:19:18 : finishes with receiving ingredients.
+onion at disposal 61.732864 grams.
+green_pepper at disposal 101.405334 grams.
+tomato at disposal 198.863235 grams.
+2021-04-23 22:19:22 : made another salad for 4.509301 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-23 22:19:22 : waited for chef to dispatch job for 0.000003 seconds
+2021-04-23 22:19:22 :  ingredient onion is not enough! JUST receive from bench: 34.397331 grams. I receive 34.397331 of onion in total
+2021-04-23 22:19:22 :  ingredient green_pepper is not enough! JUST receive from bench: 54.785530 grams. I receive 54.785530 of green_pepper in total
+2021-04-23 22:19:22 : waited for chef to put ingredient for 0.000113 seconds
+2021-04-23 22:19:22 :  ingredient onion is not enough! JUST receive from bench: 24.040667 grams. I receive 58.437996 of onion in total
+2021-04-23 22:19:22 : ingredient green_pepper is enough! I got 95.968567 grams! 
+2021-04-23 22:19:22 : waited for chef to put ingredient for 0.000103 seconds
+2021-04-23 22:19:22 : ingredient onion is enough! I got 82.651917 grams! 
+2021-04-23 22:19:22 : ingredient green_pepper is enough! I got 95.968567 grams! 
+2021-04-23 22:19:22 : finishes with receiving ingredients.
+onion at disposal 82.651917 grams.
+green_pepper at disposal 95.968567 grams.
+tomato at disposal 116.585175 grams.
+2021-04-23 22:19:26 : made another salad for 4.174859 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-23 22:19:26 : waited for chef to dispatch job for 0.000001 seconds
+2021-04-23 22:19:26 : finished! I made 2 salads in total
