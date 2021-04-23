@@ -11,7 +11,7 @@
 #include <sys/time.h>
 #include <stddef.h>
 
-double timing(struct timeval before,struct timeval after, int mkrID);
+// double timing(struct timeval before,struct timeval after, int mkrID);
 
 int main(int argc,char ** argv){
 	int mkrTime;
