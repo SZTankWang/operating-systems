@@ -19,6 +19,8 @@ typedef struct info
 	int ingres_in_need[2]; //to show which ingredients \
 							the maker needs, 1 for needed; 0 for not
 
+	char filepath[12]; //the logging file name
+
 }INFO;
 
 #endif

@@ -34,3 +34,14 @@ double timing(struct timeval before,struct timeval after, int mkrID){
 	return res;
 };
 
+
+char * timestamp(){
+	time_t ltime;
+	ltime = time(NULL);
+	return asctime(localtime(&time));
+
+};
+
+char writeLogForWait(FILE * file,double time_used,char * timestamp){
+
+}

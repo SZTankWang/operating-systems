@@ -64,7 +64,7 @@ int main(int argc, char ** argv){
     INFO info;
     shm[0] = info;
     shm[0].salads_to_go = saladNum;
-
+    char mkr[5] = "MKR";
     
     //declare semaphores
     int sem_status;
@@ -140,6 +140,13 @@ int main(int argc, char ** argv){
     	for(int j=0;j<3;j++){
     		shm[i+1].ingres_used[j] = 0;
     	}
+
+    	//initialize logging file name for mkr
+    	char index[2] ;
+    	sprintf(index,"%d",i);
+    	strcat(shm[i+1].filepath,mkr);
+		strcat(shm[i+1].filepath,index);
+
 
     }
     

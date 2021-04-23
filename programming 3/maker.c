@@ -23,9 +23,9 @@ int main(int argc,char ** argv){
 	double time_elapsed;
 	double time_spent_making=0.;
 	double t1,t2;
-	//,ticspersec;
-	// struct tms tb1,tb2;
-	// ticspersec = (double)sysconf(_SC_CLK_TCK);
+
+	char timestamp[128]; 
+	char linesplit[64] = "*****************\n";
 
 	struct timeval before,after,result; //for function gettimeofday
 
@@ -45,11 +45,15 @@ int main(int argc,char ** argv){
 		}	
 	}
 
-	// printf("MKR %d\n",mkrID);
 
 	INFO * shm;
 	shm = shmat(shmid,NULL,0);
 	// printf("number of salad %d\n",shm[0].salads_to_go);
+
+	printf("MKR %d: my file path is: %s\n",mkrID,shm[mkrID+1].filepath);
+
+	//open log file
+	file = fopen(shm[mkrID+1].filepath,"w");
 
 	//seeding random number
 
@@ -71,10 +75,12 @@ int main(int argc,char ** argv){
 		// time_spent_waiting += elapse;
 		printf("**************\n");
 		gettimeofday(&after,NULL);
-		timersub(&after, &before, &result);
 
-		time_elapsed = result.tv_sec + result.tv_usec/1e6;
+		time_elapsed = timing(before,after,mkrID);
 		time_spent_waiting += time_elapsed;
+
+		//get timestamp
+		timestamp = timestamp();
 		printf("MKR %d: (LINE 67) ANOTHER WAITING FOR CHEF FOR %f seconds\n",mkrID,time_elapsed);
 		printf("**************\n");
 
@@ -95,9 +101,8 @@ int main(int argc,char ** argv){
 				// gettimeofday(&after,NULL);
 
 				gettimeofday(&after,NULL);
-				timersub(&after, &before, &result);
 
-				time_elapsed = result.tv_sec + result.tv_usec/1e6;;
+				time_elapsed = timing(before,after,mkrID);
 				time_spent_waiting += time_elapsed;
 				
 				printf("**************\n");
