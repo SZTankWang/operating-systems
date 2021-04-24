@@ -1,3 +1,5 @@
+#include "info.h"
+#include "myUtil.h"
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <string.h>
@@ -9,7 +11,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <semaphore.h>
-#include "info.h"
+
 
 #define SHMSIZE 1024
 
@@ -349,10 +351,62 @@ int main(int argc, char ** argv){
     char * line = NULL;
     size_t len = 0;
     ssize_t nread;
-
+    int line_cnt = 0;
+    
+    //get line number
     while((nread = getline(&line,&len,share))!=-1){
     	printf("%s",line);
+    	line_cnt ++;
 
+    }
+
+    fclose(share);
+
+    //allocate memory to store data
+    //timeStorage: hold time stamps
+    //counterStorage: hold num of mkr busy at each timestamp
+    
+    char ** timeStorage = (char **) malloc(sizeof(char*)*line_cnt);
+    int * counterStorage = (int*)malloc(sizeof(int)*line_cnt);
+
+    for(int i=0;i<line_cnt;i++){
+    	timeStorage[i] = (char*)malloc(sizeof(char)*128);
+    }
+
+    //now open file again
+    share = fopen("public","r");
+    char * delim = "|";
+    int index = 0;
+    
+    while((nread = getline(&line,&len,share))!=-1){
+    	parseSharedLog(line,delim,index,timeStorage,counterStorage);
+    	index ++;	
+    }
+
+    //free line
+    free(line);
+
+    //perform iteration and searching on counterStorage
+    //a time period with multiple mkrs busy starts by finding the first \
+    counter value > 1, end with the first counter value == 1
+    
+    int start = -1;
+    int end = -1;
+    for(int i=0;i<line_cnt;i++){
+    	if(counterStorage[i] > 1 && start == -1){
+    		//found start for a new period
+    		start = i;
+    	}
+    	if(counterStorage[i] == 1 && start != -1){
+    		end = i;
+
+    		//go and display period on tty
+    		printf("time period found from %s to %s\n",timeStorage[start],timeStorage[end]);
+
+    		//reset start and end for another period
+    		start = -1;
+    		end = -1;
+    	}
     }
 
 

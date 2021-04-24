@@ -3,9 +3,9 @@ CFLAGS = -I -Wall -pthread -g
 
 all:chef maker
 
-chef:chef.o
-	$(CC) $(CFLAGS) -o chef chef.o
-chef.o:chef.c info.h
+chef:chef.o myUtil.o
+	$(CC) $(CFLAGS) -o chef chef.o myUtil.o
+chef.o:chef.c info.h myUtil.h
 	$(CC) $(CFLAGS) -c chef.c 
 
 maker:maker.o myUtil.o

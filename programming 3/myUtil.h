@@ -25,4 +25,6 @@ void writeLineSplit(FILE * file, int point);
 
 void writeCounterToLog(FILE * file,char * timestamp,int prev, int counter, int mkrID);
 
+int parseSharedLog(char * line,char * delim, int index, char ** timeStorage, int * counterStorage );
+
 #endif 

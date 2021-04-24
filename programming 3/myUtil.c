@@ -1,4 +1,5 @@
 #include <sys/shm.h>
+#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
@@ -122,5 +123,37 @@ void writeLineSplit(FILE * file, int point){
 }
 
 void writeCounterToLog(FILE * file,char * timestamp,int prev, int counter, int mkrID){
-	fprintf(file,"%s MKR %d edit %d -> %d\n",timestamp,mkrID,prev,counter);
+	fprintf(file,"%s | MKR %d edit %d -> | %d\n",timestamp,mkrID,prev,counter);
+}
+
+
+
+/*
+Function: parseSharedLog
+
+*/
+int parseSharedLog(char * line,char * delim, int index, char ** timeStorage, int * counterStorage ){
+	//write new info to allocated array
+
+	//get first token
+	char * token;
+	int cnt = 0;
+
+	token = strtok(line,delim);
+	strcpy(timeStorage[index],token);
+	cnt ++;
+
+	//walk through the other token
+	while(token != NULL){
+		// printf("%s\n",token);
+		token = strtok(NULL,delim);
+		cnt ++;
+		if(cnt == 3){
+			//write counter info
+
+			counterStorage[index] = atoi(token);
+		}
+	}
+
+	return 0;
 }
