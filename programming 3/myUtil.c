@@ -121,6 +121,6 @@ void writeLineSplit(FILE * file, int point){
 	}
 }
 
-void writeCounterToLog(FILE * file,char * timestamp,int counter){
-	fprintf(file,"%s %d\n",timestamp,counter);
+void writeCounterToLog(FILE * file,char * timestamp,int prev, int counter, int mkrID){
+	fprintf(file,"%s MKR %d edit %d -> %d\n",timestamp,mkrID,prev,counter);
 }

@@ -23,6 +23,6 @@ void writeLogForIngreReport(FILE * file, char * timestamp, char ingres[3][50], f
 
 void writeLineSplit(FILE * file, int point);
 
-void writeCounterToLog(FILE * file,char * timestamp,int counter);
+void writeCounterToLog(FILE * file,char * timestamp,int prev, int counter, int mkrID);
 
 #endif 

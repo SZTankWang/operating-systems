@@ -18,6 +18,7 @@ int main(int argc,char ** argv){
 	int mkrID;
 	int shmid;
 	int count=0;
+	int prev; //to store previous value of counter variable
 
 	double time_spent_waiting=0.;
 	double time_elapsed;
@@ -57,7 +58,7 @@ int main(int argc,char ** argv){
 
 	//open public log file
 	FILE * share;
-	share = fopen(shm[mkrID+1].sharedLog,"a");
+	
 
 	//seeding random number
 
@@ -264,11 +265,18 @@ int main(int argc,char ** argv){
 		
 		//edit shared variable counter, increase num of mkr busy by 1
 		sem_wait(&shm[0].counter_lock);
+		prev = shm[0].counter;
+				
 		shm[0].counter ++;
+		
+		//open public log
+		share = fopen(shm[mkrID+1].sharedLog,"a");
 		getTimeStamp(timestamp);
 		writeCounterToLog(share,\
-			timestamp, shm[0].counter);
+			timestamp,prev, shm[0].counter,mkrID);
 
+		//close log file
+		fclose(share);
 		sem_post(&shm[0].counter_lock);
 		
 
@@ -290,10 +298,19 @@ int main(int argc,char ** argv){
 		if(shm[0].counter == 0){
 			printf("error occurs on shared vairable COUNTER! \n");
 		}
+		prev = shm[0].counter;
 		shm[0].counter --;
+
+		//open public log file
+		share = fopen(shm[mkrID+1].sharedLog,"a");
+
 		getTimeStamp(timestamp);
 		writeCounterToLog(share,\
-			timestamp, shm[0].counter);
+			timestamp, prev,shm[0].counter,mkrID);
+
+		//close log file
+
+		fclose(share);
 
 		sem_post(&shm[0].counter_lock);
 		

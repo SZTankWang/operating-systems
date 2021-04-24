@@ -336,6 +336,24 @@ int main(int argc, char ** argv){
  
     }
 
+    printf("computing time period that multiple maker were busy...\n");
+
+    //open share file
+    FILE * share = fopen("public","r");
+
+    if(share == NULL){
+    	printf("error opening public log file, exit!\n");
+    	exit(-1);
+    }
+
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t nread;
+
+    while((nread = getline(&line,&len,share))!=-1){
+    	printf("%s",line);
+
+    }
 
 
     shmdt(shm); 
