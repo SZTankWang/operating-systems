@@ -19,7 +19,7 @@ typedef struct info
 	float ingres_used[3]; //record amount of ingredients used by a maker
 	int ingres_ideal[3];
 	float time_spent_making;
-	long double time_spent_waiting;
+	double time_spent_waiting;
 	int ingres_in_need[2]; //to show which ingredients \
 							the maker needs, 1 for needed; 0 for not
 

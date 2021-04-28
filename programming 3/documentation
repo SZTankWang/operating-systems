@@ -1,0 +1,62 @@
+Programming Assignment 3
+Documentation
+Zhenming Wang
+2021/4/26
+
+Project Structure
+---
+Two file for the two roles: chef.c & maker.c
+one file for utility methods: myUtil.c
+one file for defining data structures: info.h
+
+Design Choices
+---
+
+1.First, I would like to talk about the design issue of the shared memory.
+Since chef and makers proesses would rely on objects / varaibles in the shared memory to communicate, and there will be various types of variables, for example, semaphores, integers, arrays. Therefore, it is a good idea to declare a shared memory to store some self-defined structs. I define a struct called INFO type, and in each storate unit of the shared memory, I store an INFO struct. In the first address of the shared memory, the struct is responsible for holding public variables, for example, number of salads left to make, and semaphores for each of those public varaibles. In the next three addresses, I store an INFO struct for each maker. The chef would coordinate with an indicidual maker through the INFO struct that belongs to themselves. If a maker has ID i, then the struct INFO belongs to him is at sharedMemory[i+1]. 
+
+
+2. Next, I wnat to talk about the process of how chef and makers coordinate and eventually finish making a salad.
+
+Chef: 
+	Main Loop (including pick maker, supply ingredients, rest) 
+		|
+
+  Ingredient Loop (iteratively supply ingredients to the chosen maker, 
+  					until both ingredients have been marked enough)
+
+	put on bench (pick the in-need ingredients)
+
+  sem_post(pick_lock) (notify the maker to pick up ingredients)
+
+  sem_wait(mkr_ready) (wait until the maker has picked up ingredients)
+
+  exit Ingredient Loop (when both are marked enough)
+
+  		|
+
+another round of main loop
+
+
+Maker:
+	
+	Main Loop (wait for new job)
+
+		|
+Pick ingredients loop (pick ingredients from bench)
+
+check if no salads need to be made (exit main loop)
+
+else, pick from bench, and get weights
+
+compare weights for each ingredients received this round 
+with the minimum requirement of disposal weight (eg, tomato 100g)
+
+determine which one still needs more
+
+sem_post(mkr_ready) (tell chef he has picked up ingredients)
+
+if still need more, sem_wait(pick_lock) (wait for chef's ingredients to come again), else, exit pick loop
+	
+		|
+make salads, finish, re-enter main loop

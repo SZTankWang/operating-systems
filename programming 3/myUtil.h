@@ -17,7 +17,7 @@ void writeLogForSalad(FILE * file,double time_used,char * timestamp, int saladCn
 
 void writeLogForMkrBye(FILE * file,char * timestamp, int saladCnt);
 
-void writeLogForVege(FILE * file,char * timestamp, int enough,float weight,float total_received,char * ingre_name );
+void writeLogForVege(FILE * file,int fromChef,char * timestamp, int enough,float weight,float total_received,char * ingre_name );
 
 void writeLogForIngreReport(FILE * file, char * timestamp, char ingres[3][50], float * disposal);
 
@@ -27,4 +27,5 @@ void writeCounterToLog(FILE * file,char * timestamp,int prev, int counter, int m
 
 int parseSharedLog(char * line,char * delim, int index, char ** timeStorage, int * counterStorage );
 
+void openAndReadLog(FILE * file);
 #endif 

@@ -1,0 +1,19 @@
+To run the project:
+only need to invoke chef process. I add one more argument for controlling the time a maker needs to finish one salad
+
+So do:
+make -> 
+./chef -n <num of salads> -m <chef rest time> -c <mkr time for a salad>
+
+The maker processes are going to be forked by chef
+
+-To examine the execution of the process:
+-- for each maker, there will be an individual log file named "MKR{i}", where i belongs to {0,1,2}.
+
+-- for the parrallel working period, there is a public log file named "public".
+
+Those files will also be outputted on tty at the end of chef's execution. 
+
+Thank you! 
+
+Zhenming 

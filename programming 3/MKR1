@@ -1,22 +1,447 @@
 ************************
 New salad making start from here
-2021-04-24 11:20:48 : waited for chef to dispatch job for 9.857139 seconds
-2021-04-24 11:20:48 :  ingredient tomato is not enough! JUST receive from bench: 82.335709 grams. I receive 82.335709 of tomato in total
-2021-04-24 11:20:48 :  ingredient onion is not enough! JUST receive from bench: 25.160933 grams. I receive 25.160933 of onion in total
-2021-04-24 11:20:48 : waited for chef to put ingredient for 0.000009 seconds
-2021-04-24 11:20:48 : ingredient tomato is enough! I got 164.000961 grams! 
-2021-04-24 11:20:48 :  ingredient onion is not enough! JUST receive from bench: 26.827837 grams. I receive 51.988770 of onion in total
-2021-04-24 11:20:48 : waited for chef to put ingredient for 0.000006 seconds
-2021-04-24 11:20:48 : ingredient tomato is enough! I got 164.000961 grams! 
-2021-04-24 11:20:48 : ingredient onion is enough! I got 79.156471 grams! 
-2021-04-24 11:20:48 : finishes with receiving ingredients.
-tomato at disposal 164.000961 grams.
-onion at disposal 79.156471 grams.
-green_pepper at disposal 153.958817 grams.
-2021-04-24 11:20:53 : made another salad for 4.573173 seconds
+2021-04-26 21:51:05 : waited for chef to dispatch job for 4.783891 seconds
+2021-04-26 21:51:05 :  ingredient tomato given by chef is not enough! JUST receive from bench: 74.861656 grams. I receive 74.861656 of tomato in total
+2021-04-26 21:51:05 :  ingredient onion given by chef is not enough! JUST receive from bench: 28.720867 grams. I receive 28.720867 of onion in total
+2021-04-26 21:51:05 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 45.297501 grams. I receive 45.297501 of green_pepper in total
+2021-04-26 21:51:05 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 46.788536 grams. I receive 92.086037 of green_pepper in total
+2021-04-26 21:51:05 : ingredient green_pepper picked by myself is enough! Just received another 46.788536 grams. I got 92.086037 grams at my disposal! 
+2021-04-26 21:51:05 : waited for chef to put ingredient for 0.000015 seconds
+2021-04-26 21:51:05 : ingredient tomato given by chef is enough! Just received another 72.584213 grams. I got 147.445862 grams at my disposal! 
+2021-04-26 21:51:05 :  ingredient onion given by chef is not enough! JUST receive from bench: 24.985889 grams. I receive 53.706757 of onion in total
+2021-04-26 21:51:05 : ingredient green_pepper picked by myself is enough! Just received another 46.788536 grams. I got 92.086037 grams at my disposal! 
+2021-04-26 21:51:05 : waited for chef to put ingredient for 0.000009 seconds
+2021-04-26 21:51:05 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 147.445862 grams at my disposal! 
+2021-04-26 21:51:05 : ingredient onion given by chef is enough! Just received another 26.268345 grams. I got 79.975098 grams at my disposal! 
+2021-04-26 21:51:05 : ingredient green_pepper picked by myself is enough! Just received another 46.788536 grams. I got 92.086037 grams at my disposal! 
+2021-04-26 21:51:05 : finishes with receiving ingredients.
+tomato at disposal 147.445862 grams.
+onion at disposal 79.975098 grams.
+green_pepper at disposal 92.086037 grams.
+2021-04-26 21:51:13 : made another salad for 8.529874 seconds
 ************************
 
 ************************
 New salad making start from here
-2021-04-24 11:20:53 : waited for chef to dispatch job for 0.000001 seconds
-2021-04-24 11:20:53 : finished! I made 1 salads in total
+2021-04-26 21:51:13 : waited for chef to dispatch job for 0.000041 seconds
+2021-04-26 21:51:13 :  ingredient tomato given by chef is not enough! JUST receive from bench: 82.607422 grams. I receive 82.607422 of tomato in total
+2021-04-26 21:51:13 :  ingredient onion given by chef is not enough! JUST receive from bench: 33.641651 grams. I receive 33.641651 of onion in total
+2021-04-26 21:51:13 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 52.640766 grams. I receive 52.640766 of green_pepper in total
+2021-04-26 21:51:13 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 52.906132 grams. I receive 105.546898 of green_pepper in total
+2021-04-26 21:51:13 : ingredient green_pepper picked by myself is enough! Just received another 52.906132 grams. I got 105.546898 grams at my disposal! 
+2021-04-26 21:51:13 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:51:13 : ingredient tomato given by chef is enough! Just received another 87.352844 grams. I got 169.960266 grams at my disposal! 
+2021-04-26 21:51:13 : ingredient onion given by chef is enough! Just received another 34.650093 grams. I got 68.291748 grams at my disposal! 
+2021-04-26 21:51:13 : ingredient green_pepper picked by myself is enough! Just received another 52.906132 grams. I got 105.546898 grams at my disposal! 
+2021-04-26 21:51:13 : finishes with receiving ingredients.
+tomato at disposal 169.960266 grams.
+onion at disposal 68.291748 grams.
+green_pepper at disposal 105.546898 grams.
+2021-04-26 21:51:22 : made another salad for 9.271986 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:51:22 : waited for chef to dispatch job for 0.000018 seconds
+2021-04-26 21:51:22 :  ingredient tomato given by chef is not enough! JUST receive from bench: 75.739944 grams. I receive 75.739944 of tomato in total
+2021-04-26 21:51:22 :  ingredient onion given by chef is not enough! JUST receive from bench: 30.506323 grams. I receive 30.506323 of onion in total
+2021-04-26 21:51:22 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 57.172970 grams. I receive 57.172970 of green_pepper in total
+2021-04-26 21:51:22 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 47.337463 grams. I receive 104.510437 of green_pepper in total
+2021-04-26 21:51:22 : ingredient green_pepper picked by myself is enough! Just received another 47.337463 grams. I got 104.510437 grams at my disposal! 
+2021-04-26 21:51:22 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:51:22 : ingredient tomato given by chef is enough! Just received another 86.770164 grams. I got 162.510101 grams at my disposal! 
+2021-04-26 21:51:22 : ingredient onion given by chef is enough! Just received another 29.598570 grams. I got 60.104893 grams at my disposal! 
+2021-04-26 21:51:22 : ingredient green_pepper picked by myself is enough! Just received another 47.337463 grams. I got 104.510437 grams at my disposal! 
+2021-04-26 21:51:22 : finishes with receiving ingredients.
+tomato at disposal 162.510101 grams.
+onion at disposal 60.104893 grams.
+green_pepper at disposal 104.510437 grams.
+2021-04-26 21:51:32 : made another salad for 9.717682 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:51:32 : waited for chef to dispatch job for 0.000020 seconds
+2021-04-26 21:51:32 :  ingredient tomato given by chef is not enough! JUST receive from bench: 64.575905 grams. I receive 64.575905 of tomato in total
+2021-04-26 21:51:32 :  ingredient onion given by chef is not enough! JUST receive from bench: 33.010098 grams. I receive 33.010098 of onion in total
+2021-04-26 21:51:32 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 58.794994 grams. I receive 58.794994 of green_pepper in total
+2021-04-26 21:51:32 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 49.867268 grams. I receive 108.662262 of green_pepper in total
+2021-04-26 21:51:32 : ingredient green_pepper picked by myself is enough! Just received another 49.867268 grams. I got 108.662262 grams at my disposal! 
+2021-04-26 21:51:32 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:51:32 : ingredient tomato given by chef is enough! Just received another 79.744942 grams. I got 144.320847 grams at my disposal! 
+2021-04-26 21:51:32 : ingredient onion given by chef is enough! Just received another 32.417252 grams. I got 65.427353 grams at my disposal! 
+2021-04-26 21:51:32 : ingredient green_pepper picked by myself is enough! Just received another 49.867268 grams. I got 108.662262 grams at my disposal! 
+2021-04-26 21:51:32 : finishes with receiving ingredients.
+tomato at disposal 144.320847 grams.
+onion at disposal 65.427353 grams.
+green_pepper at disposal 108.662262 grams.
+2021-04-26 21:51:42 : made another salad for 9.879563 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:51:45 : waited for chef to dispatch job for 2.668205 seconds
+2021-04-26 21:51:45 :  ingredient tomato given by chef is not enough! JUST receive from bench: 75.848503 grams. I receive 75.848503 of tomato in total
+2021-04-26 21:51:45 :  ingredient onion given by chef is not enough! JUST receive from bench: 30.063389 grams. I receive 30.063389 of onion in total
+2021-04-26 21:51:45 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 42.098862 grams. I receive 42.098862 of green_pepper in total
+2021-04-26 21:51:45 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 47.405315 grams. I receive 89.504181 of green_pepper in total
+2021-04-26 21:51:45 : ingredient green_pepper picked by myself is enough! Just received another 47.405315 grams. I got 89.504181 grams at my disposal! 
+2021-04-26 21:51:45 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:51:45 : ingredient tomato given by chef is enough! Just received another 66.503235 grams. I got 142.351746 grams at my disposal! 
+2021-04-26 21:51:45 :  ingredient onion given by chef is not enough! JUST receive from bench: 29.430405 grams. I receive 59.493793 of onion in total
+2021-04-26 21:51:45 : ingredient green_pepper picked by myself is enough! Just received another 47.405315 grams. I got 89.504181 grams at my disposal! 
+2021-04-26 21:51:45 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:51:45 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 142.351746 grams at my disposal! 
+2021-04-26 21:51:45 : ingredient onion given by chef is enough! Just received another 24.352934 grams. I got 83.846725 grams at my disposal! 
+2021-04-26 21:51:45 : ingredient green_pepper picked by myself is enough! Just received another 47.405315 grams. I got 89.504181 grams at my disposal! 
+2021-04-26 21:51:45 : finishes with receiving ingredients.
+tomato at disposal 142.351746 grams.
+onion at disposal 83.846725 grams.
+green_pepper at disposal 89.504181 grams.
+2021-04-26 21:51:53 : made another salad for 8.210054 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:51:57 : waited for chef to dispatch job for 3.872574 seconds
+2021-04-26 21:51:57 :  ingredient tomato given by chef is not enough! JUST receive from bench: 90.401299 grams. I receive 90.401299 of tomato in total
+2021-04-26 21:51:57 :  ingredient onion given by chef is not enough! JUST receive from bench: 31.626600 grams. I receive 31.626600 of onion in total
+2021-04-26 21:51:57 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 48.097408 grams. I receive 48.097408 of green_pepper in total
+2021-04-26 21:51:57 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 56.500813 grams. I receive 104.598221 of green_pepper in total
+2021-04-26 21:51:57 : ingredient green_pepper picked by myself is enough! Just received another 56.500813 grams. I got 104.598221 grams at my disposal! 
+2021-04-26 21:51:57 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:51:57 : ingredient tomato given by chef is enough! Just received another 77.402405 grams. I got 167.803711 grams at my disposal! 
+2021-04-26 21:51:57 :  ingredient onion given by chef is not enough! JUST receive from bench: 25.901104 grams. I receive 57.527702 of onion in total
+2021-04-26 21:51:57 : ingredient green_pepper picked by myself is enough! Just received another 56.500813 grams. I got 104.598221 grams at my disposal! 
+2021-04-26 21:51:57 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:51:57 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 167.803711 grams at my disposal! 
+2021-04-26 21:51:57 : ingredient onion given by chef is enough! Just received another 26.128363 grams. I got 83.656067 grams at my disposal! 
+2021-04-26 21:51:57 : ingredient green_pepper picked by myself is enough! Just received another 56.500813 grams. I got 104.598221 grams at my disposal! 
+2021-04-26 21:51:57 : finishes with receiving ingredients.
+tomato at disposal 167.803711 grams.
+onion at disposal 83.656067 grams.
+green_pepper at disposal 104.598221 grams.
+2021-04-26 21:52:06 : made another salad for 8.810391 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:52:06 : waited for chef to dispatch job for 0.000012 seconds
+2021-04-26 21:52:06 :  ingredient tomato given by chef is not enough! JUST receive from bench: 65.907516 grams. I receive 65.907516 of tomato in total
+2021-04-26 21:52:06 :  ingredient onion given by chef is not enough! JUST receive from bench: 24.455902 grams. I receive 24.455902 of onion in total
+2021-04-26 21:52:06 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 42.517029 grams. I receive 42.517029 of green_pepper in total
+2021-04-26 21:52:06 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 50.721951 grams. I receive 93.238983 of green_pepper in total
+2021-04-26 21:52:06 : ingredient green_pepper picked by myself is enough! Just received another 50.721951 grams. I got 93.238983 grams at my disposal! 
+2021-04-26 21:52:06 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:52:06 : ingredient tomato given by chef is enough! Just received another 91.914032 grams. I got 157.821548 grams at my disposal! 
+2021-04-26 21:52:06 :  ingredient onion given by chef is not enough! JUST receive from bench: 29.458275 grams. I receive 53.914177 of onion in total
+2021-04-26 21:52:06 : ingredient green_pepper picked by myself is enough! Just received another 50.721951 grams. I got 93.238983 grams at my disposal! 
+2021-04-26 21:52:06 : waited for chef to put ingredient for 0.000001 seconds
+2021-04-26 21:52:06 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 157.821548 grams at my disposal! 
+2021-04-26 21:52:06 : ingredient onion given by chef is enough! Just received another 34.000866 grams. I got 87.915039 grams at my disposal! 
+2021-04-26 21:52:06 : ingredient green_pepper picked by myself is enough! Just received another 50.721951 grams. I got 93.238983 grams at my disposal! 
+2021-04-26 21:52:06 : finishes with receiving ingredients.
+tomato at disposal 157.821548 grams.
+onion at disposal 87.915039 grams.
+green_pepper at disposal 93.238983 grams.
+2021-04-26 21:52:14 : made another salad for 8.251896 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:52:14 : waited for chef to dispatch job for 0.000012 seconds
+2021-04-26 21:52:14 :  ingredient tomato given by chef is not enough! JUST receive from bench: 86.200073 grams. I receive 86.200073 of tomato in total
+2021-04-26 21:52:14 :  ingredient onion given by chef is not enough! JUST receive from bench: 24.844311 grams. I receive 24.844311 of onion in total
+2021-04-26 21:52:14 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 49.868889 grams. I receive 49.868889 of green_pepper in total
+2021-04-26 21:52:14 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 46.910736 grams. I receive 96.779625 of green_pepper in total
+2021-04-26 21:52:14 : ingredient green_pepper picked by myself is enough! Just received another 46.910736 grams. I got 96.779625 grams at my disposal! 
+2021-04-26 21:52:14 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:52:14 : ingredient tomato given by chef is enough! Just received another 66.497337 grams. I got 152.697418 grams at my disposal! 
+2021-04-26 21:52:14 :  ingredient onion given by chef is not enough! JUST receive from bench: 27.588825 grams. I receive 52.433136 of onion in total
+2021-04-26 21:52:14 : ingredient green_pepper picked by myself is enough! Just received another 46.910736 grams. I got 96.779625 grams at my disposal! 
+2021-04-26 21:52:14 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:52:14 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 152.697418 grams at my disposal! 
+2021-04-26 21:52:14 : ingredient onion given by chef is enough! Just received another 24.582750 grams. I got 77.015884 grams at my disposal! 
+2021-04-26 21:52:14 : ingredient green_pepper picked by myself is enough! Just received another 46.910736 grams. I got 96.779625 grams at my disposal! 
+2021-04-26 21:52:14 : finishes with receiving ingredients.
+tomato at disposal 152.697418 grams.
+onion at disposal 77.015884 grams.
+green_pepper at disposal 96.779625 grams.
+2021-04-26 21:52:23 : made another salad for 8.987466 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:52:52 : waited for chef to dispatch job for 28.922426 seconds
+2021-04-26 21:52:52 :  ingredient tomato given by chef is not enough! JUST receive from bench: 81.174072 grams. I receive 81.174072 of tomato in total
+2021-04-26 21:52:52 :  ingredient onion given by chef is not enough! JUST receive from bench: 27.290970 grams. I receive 27.290970 of onion in total
+2021-04-26 21:52:52 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 52.163074 grams. I receive 52.163074 of green_pepper in total
+2021-04-26 21:52:52 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 50.733795 grams. I receive 102.896866 of green_pepper in total
+2021-04-26 21:52:52 : ingredient green_pepper picked by myself is enough! Just received another 50.733795 grams. I got 102.896866 grams at my disposal! 
+2021-04-26 21:52:52 : waited for chef to put ingredient for 0.000019 seconds
+2021-04-26 21:52:52 : ingredient tomato given by chef is enough! Just received another 64.505791 grams. I got 145.679871 grams at my disposal! 
+2021-04-26 21:52:52 :  ingredient onion given by chef is not enough! JUST receive from bench: 24.250975 grams. I receive 51.541946 of onion in total
+2021-04-26 21:52:52 : ingredient green_pepper picked by myself is enough! Just received another 50.733795 grams. I got 102.896866 grams at my disposal! 
+2021-04-26 21:52:52 : waited for chef to put ingredient for 0.000015 seconds
+2021-04-26 21:52:52 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 145.679871 grams at my disposal! 
+2021-04-26 21:52:52 : ingredient onion given by chef is enough! Just received another 27.773510 grams. I got 79.315460 grams at my disposal! 
+2021-04-26 21:52:52 : ingredient green_pepper picked by myself is enough! Just received another 50.733795 grams. I got 102.896866 grams at my disposal! 
+2021-04-26 21:52:52 : finishes with receiving ingredients.
+tomato at disposal 145.679871 grams.
+onion at disposal 79.315460 grams.
+green_pepper at disposal 102.896866 grams.
+2021-04-26 21:53:01 : made another salad for 9.216580 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:53:01 : waited for chef to dispatch job for 0.000031 seconds
+2021-04-26 21:53:01 :  ingredient tomato given by chef is not enough! JUST receive from bench: 64.598274 grams. I receive 64.598274 of tomato in total
+2021-04-26 21:53:01 :  ingredient onion given by chef is not enough! JUST receive from bench: 31.128376 grams. I receive 31.128376 of onion in total
+2021-04-26 21:53:01 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 56.776516 grams. I receive 56.776516 of green_pepper in total
+2021-04-26 21:53:01 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 45.216560 grams. I receive 101.993073 of green_pepper in total
+2021-04-26 21:53:01 : ingredient green_pepper picked by myself is enough! Just received another 45.216560 grams. I got 101.993073 grams at my disposal! 
+2021-04-26 21:53:01 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:53:01 : ingredient tomato given by chef is enough! Just received another 78.069618 grams. I got 142.667892 grams at my disposal! 
+2021-04-26 21:53:01 :  ingredient onion given by chef is not enough! JUST receive from bench: 25.550924 grams. I receive 56.679298 of onion in total
+2021-04-26 21:53:01 : ingredient green_pepper picked by myself is enough! Just received another 45.216560 grams. I got 101.993073 grams at my disposal! 
+2021-04-26 21:53:01 : waited for chef to put ingredient for 0.000026 seconds
+2021-04-26 21:53:01 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 142.667892 grams at my disposal! 
+2021-04-26 21:53:01 : ingredient onion given by chef is enough! Just received another 31.729349 grams. I got 88.408646 grams at my disposal! 
+2021-04-26 21:53:01 : ingredient green_pepper picked by myself is enough! Just received another 45.216560 grams. I got 101.993073 grams at my disposal! 
+2021-04-26 21:53:01 : finishes with receiving ingredients.
+tomato at disposal 142.667892 grams.
+onion at disposal 88.408646 grams.
+green_pepper at disposal 101.993073 grams.
+2021-04-26 21:53:11 : made another salad for 9.678718 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:53:11 : waited for chef to dispatch job for 0.000013 seconds
+2021-04-26 21:53:11 :  ingredient tomato given by chef is not enough! JUST receive from bench: 84.951744 grams. I receive 84.951744 of tomato in total
+2021-04-26 21:53:11 :  ingredient onion given by chef is not enough! JUST receive from bench: 31.497604 grams. I receive 31.497604 of onion in total
+2021-04-26 21:53:11 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 58.411896 grams. I receive 58.411896 of green_pepper in total
+2021-04-26 21:53:11 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 57.803680 grams. I receive 116.215576 of green_pepper in total
+2021-04-26 21:53:11 : ingredient green_pepper picked by myself is enough! Just received another 57.803680 grams. I got 116.215576 grams at my disposal! 
+2021-04-26 21:53:11 : waited for chef to put ingredient for 0.000030 seconds
+2021-04-26 21:53:11 : ingredient tomato given by chef is enough! Just received another 68.695496 grams. I got 153.647247 grams at my disposal! 
+2021-04-26 21:53:11 : ingredient onion given by chef is enough! Just received another 35.711426 grams. I got 67.209030 grams at my disposal! 
+2021-04-26 21:53:11 : ingredient green_pepper picked by myself is enough! Just received another 57.803680 grams. I got 116.215576 grams at my disposal! 
+2021-04-26 21:53:11 : finishes with receiving ingredients.
+tomato at disposal 153.647247 grams.
+onion at disposal 67.209030 grams.
+green_pepper at disposal 116.215576 grams.
+2021-04-26 21:53:21 : made another salad for 9.841564 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:53:21 : waited for chef to dispatch job for 0.000010 seconds
+2021-04-26 21:53:21 :  ingredient tomato given by chef is not enough! JUST receive from bench: 64.543808 grams. I receive 64.543808 of tomato in total
+2021-04-26 21:53:21 :  ingredient onion given by chef is not enough! JUST receive from bench: 30.612549 grams. I receive 30.612549 of onion in total
+2021-04-26 21:53:21 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 40.050194 grams. I receive 40.050194 of green_pepper in total
+2021-04-26 21:53:21 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 40.339882 grams. I receive 80.390076 of green_pepper in total
+2021-04-26 21:53:21 : ingredient green_pepper picked by myself is enough! Just received another 40.339882 grams. I got 80.390076 grams at my disposal! 
+2021-04-26 21:53:21 : waited for chef to put ingredient for 0.000025 seconds
+2021-04-26 21:53:21 : ingredient tomato given by chef is enough! Just received another 89.613869 grams. I got 154.157684 grams at my disposal! 
+2021-04-26 21:53:21 :  ingredient onion given by chef is not enough! JUST receive from bench: 25.310301 grams. I receive 55.922852 of onion in total
+2021-04-26 21:53:21 : ingredient green_pepper picked by myself is enough! Just received another 40.339882 grams. I got 80.390076 grams at my disposal! 
+2021-04-26 21:53:21 : waited for chef to put ingredient for 0.000009 seconds
+2021-04-26 21:53:21 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 154.157684 grams at my disposal! 
+2021-04-26 21:53:21 : ingredient onion given by chef is enough! Just received another 26.620728 grams. I got 82.543579 grams at my disposal! 
+2021-04-26 21:53:21 : ingredient green_pepper picked by myself is enough! Just received another 40.339882 grams. I got 80.390076 grams at my disposal! 
+2021-04-26 21:53:21 : finishes with receiving ingredients.
+tomato at disposal 154.157684 grams.
+onion at disposal 82.543579 grams.
+green_pepper at disposal 80.390076 grams.
+2021-04-26 21:53:29 : made another salad for 8.005658 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:53:29 : waited for chef to dispatch job for 0.000011 seconds
+2021-04-26 21:53:29 :  ingredient tomato given by chef is not enough! JUST receive from bench: 72.404411 grams. I receive 72.404411 of tomato in total
+2021-04-26 21:53:29 :  ingredient onion given by chef is not enough! JUST receive from bench: 29.606108 grams. I receive 29.606108 of onion in total
+2021-04-26 21:53:29 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 47.407036 grams. I receive 47.407036 of green_pepper in total
+2021-04-26 21:53:29 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 56.493141 grams. I receive 103.900177 of green_pepper in total
+2021-04-26 21:53:29 : ingredient green_pepper picked by myself is enough! Just received another 56.493141 grams. I got 103.900177 grams at my disposal! 
+2021-04-26 21:53:29 : waited for chef to put ingredient for 0.000027 seconds
+2021-04-26 21:53:29 : ingredient tomato given by chef is enough! Just received another 88.573792 grams. I got 160.978210 grams at my disposal! 
+2021-04-26 21:53:29 : ingredient onion given by chef is enough! Just received another 35.025749 grams. I got 64.631859 grams at my disposal! 
+2021-04-26 21:53:29 : ingredient green_pepper picked by myself is enough! Just received another 56.493141 grams. I got 103.900177 grams at my disposal! 
+2021-04-26 21:53:29 : finishes with receiving ingredients.
+tomato at disposal 160.978210 grams.
+onion at disposal 64.631859 grams.
+green_pepper at disposal 103.900177 grams.
+2021-04-26 21:53:37 : made another salad for 8.741113 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:53:37 : waited for chef to dispatch job for 0.000012 seconds
+2021-04-26 21:53:37 :  ingredient tomato given by chef is not enough! JUST receive from bench: 84.119789 grams. I receive 84.119789 of tomato in total
+2021-04-26 21:53:37 :  ingredient onion given by chef is not enough! JUST receive from bench: 34.766769 grams. I receive 34.766769 of onion in total
+2021-04-26 21:53:37 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 44.770779 grams. I receive 44.770779 of green_pepper in total
+2021-04-26 21:53:37 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 52.574871 grams. I receive 97.345650 of green_pepper in total
+2021-04-26 21:53:37 : ingredient green_pepper picked by myself is enough! Just received another 52.574871 grams. I got 97.345650 grams at my disposal! 
+2021-04-26 21:53:37 : waited for chef to put ingredient for 0.000027 seconds
+2021-04-26 21:53:37 : ingredient tomato given by chef is enough! Just received another 77.587357 grams. I got 161.707153 grams at my disposal! 
+2021-04-26 21:53:37 : ingredient onion given by chef is enough! Just received another 30.678579 grams. I got 65.445351 grams at my disposal! 
+2021-04-26 21:53:37 : ingredient green_pepper picked by myself is enough! Just received another 52.574871 grams. I got 97.345650 grams at my disposal! 
+2021-04-26 21:53:37 : finishes with receiving ingredients.
+tomato at disposal 161.707153 grams.
+onion at disposal 65.445351 grams.
+green_pepper at disposal 97.345650 grams.
+2021-04-26 21:53:46 : made another salad for 8.477181 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:53:46 : waited for chef to dispatch job for 0.000012 seconds
+2021-04-26 21:53:46 :  ingredient tomato given by chef is not enough! JUST receive from bench: 64.823891 grams. I receive 64.823891 of tomato in total
+2021-04-26 21:53:46 :  ingredient onion given by chef is not enough! JUST receive from bench: 24.245306 grams. I receive 24.245306 of onion in total
+2021-04-26 21:53:46 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 59.308498 grams. I receive 59.308498 of green_pepper in total
+2021-04-26 21:53:46 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 46.985706 grams. I receive 106.294205 of green_pepper in total
+2021-04-26 21:53:46 : ingredient green_pepper picked by myself is enough! Just received another 46.985706 grams. I got 106.294205 grams at my disposal! 
+2021-04-26 21:53:46 : waited for chef to put ingredient for 0.000029 seconds
+2021-04-26 21:53:46 : ingredient tomato given by chef is enough! Just received another 85.499519 grams. I got 150.323410 grams at my disposal! 
+2021-04-26 21:53:46 :  ingredient onion given by chef is not enough! JUST receive from bench: 31.216864 grams. I receive 55.462170 of onion in total
+2021-04-26 21:53:46 : ingredient green_pepper picked by myself is enough! Just received another 46.985706 grams. I got 106.294205 grams at my disposal! 
+2021-04-26 21:53:46 : waited for chef to put ingredient for 0.000012 seconds
+2021-04-26 21:53:46 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 150.323410 grams at my disposal! 
+2021-04-26 21:53:46 : ingredient onion given by chef is enough! Just received another 27.689943 grams. I got 83.152115 grams at my disposal! 
+2021-04-26 21:53:46 : ingredient green_pepper picked by myself is enough! Just received another 46.985706 grams. I got 106.294205 grams at my disposal! 
+2021-04-26 21:53:46 : finishes with receiving ingredients.
+tomato at disposal 150.323410 grams.
+onion at disposal 83.152115 grams.
+green_pepper at disposal 106.294205 grams.
+2021-04-26 21:53:56 : made another salad for 9.930889 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:54:39 : waited for chef to dispatch job for 43.038094 seconds
+2021-04-26 21:54:39 :  ingredient tomato given by chef is not enough! JUST receive from bench: 71.603142 grams. I receive 71.603142 of tomato in total
+2021-04-26 21:54:39 :  ingredient onion given by chef is not enough! JUST receive from bench: 31.917223 grams. I receive 31.917223 of onion in total
+2021-04-26 21:54:39 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 59.118469 grams. I receive 59.118469 of green_pepper in total
+2021-04-26 21:54:39 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 44.751965 grams. I receive 103.870438 of green_pepper in total
+2021-04-26 21:54:39 : ingredient green_pepper picked by myself is enough! Just received another 44.751965 grams. I got 103.870438 grams at my disposal! 
+2021-04-26 21:54:39 : waited for chef to put ingredient for 0.000020 seconds
+2021-04-26 21:54:39 : ingredient tomato given by chef is enough! Just received another 88.600731 grams. I got 160.203873 grams at my disposal! 
+2021-04-26 21:54:39 : ingredient onion given by chef is enough! Just received another 29.568872 grams. I got 61.486095 grams at my disposal! 
+2021-04-26 21:54:39 : ingredient green_pepper picked by myself is enough! Just received another 44.751965 grams. I got 103.870438 grams at my disposal! 
+2021-04-26 21:54:39 : finishes with receiving ingredients.
+tomato at disposal 160.203873 grams.
+onion at disposal 61.486095 grams.
+green_pepper at disposal 103.870438 grams.
+2021-04-26 21:54:49 : made another salad for 9.912124 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:54:56 : waited for chef to dispatch job for 7.181984 seconds
+2021-04-26 21:54:56 :  ingredient tomato given by chef is not enough! JUST receive from bench: 72.429306 grams. I receive 72.429306 of tomato in total
+2021-04-26 21:54:56 :  ingredient onion given by chef is not enough! JUST receive from bench: 33.700527 grams. I receive 33.700527 of onion in total
+2021-04-26 21:54:56 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 41.045353 grams. I receive 41.045353 of green_pepper in total
+2021-04-26 21:54:56 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 45.268314 grams. I receive 86.313667 of green_pepper in total
+2021-04-26 21:54:56 : ingredient green_pepper picked by myself is enough! Just received another 45.268314 grams. I got 86.313667 grams at my disposal! 
+2021-04-26 21:54:56 : waited for chef to put ingredient for 0.000015 seconds
+2021-04-26 21:54:56 : ingredient tomato given by chef is enough! Just received another 86.887253 grams. I got 159.316559 grams at my disposal! 
+2021-04-26 21:54:56 : ingredient onion given by chef is enough! Just received another 28.162155 grams. I got 61.862682 grams at my disposal! 
+2021-04-26 21:54:56 : ingredient green_pepper picked by myself is enough! Just received another 45.268314 grams. I got 86.313667 grams at my disposal! 
+2021-04-26 21:54:56 : finishes with receiving ingredients.
+tomato at disposal 159.316559 grams.
+onion at disposal 61.862682 grams.
+green_pepper at disposal 86.313667 grams.
+2021-04-26 21:55:04 : made another salad for 8.104650 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:55:04 : waited for chef to dispatch job for 0.000011 seconds
+2021-04-26 21:55:04 :  ingredient tomato given by chef is not enough! JUST receive from bench: 64.039978 grams. I receive 64.039978 of tomato in total
+2021-04-26 21:55:04 :  ingredient onion given by chef is not enough! JUST receive from bench: 26.554813 grams. I receive 26.554813 of onion in total
+2021-04-26 21:55:04 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 48.372303 grams. I receive 48.372303 of green_pepper in total
+2021-04-26 21:55:04 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 51.357639 grams. I receive 99.729942 of green_pepper in total
+2021-04-26 21:55:04 : ingredient green_pepper picked by myself is enough! Just received another 51.357639 grams. I got 99.729942 grams at my disposal! 
+2021-04-26 21:55:04 : waited for chef to put ingredient for 0.000026 seconds
+2021-04-26 21:55:04 : ingredient tomato given by chef is enough! Just received another 69.517395 grams. I got 133.557373 grams at my disposal! 
+2021-04-26 21:55:04 :  ingredient onion given by chef is not enough! JUST receive from bench: 25.767437 grams. I receive 52.322250 of onion in total
+2021-04-26 21:55:04 : ingredient green_pepper picked by myself is enough! Just received another 51.357639 grams. I got 99.729942 grams at my disposal! 
+2021-04-26 21:55:04 : waited for chef to put ingredient for 0.000010 seconds
+2021-04-26 21:55:04 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 133.557373 grams at my disposal! 
+2021-04-26 21:55:04 : ingredient onion given by chef is enough! Just received another 34.346016 grams. I got 86.668266 grams at my disposal! 
+2021-04-26 21:55:04 : ingredient green_pepper picked by myself is enough! Just received another 51.357639 grams. I got 99.729942 grams at my disposal! 
+2021-04-26 21:55:04 : finishes with receiving ingredients.
+tomato at disposal 133.557373 grams.
+onion at disposal 86.668266 grams.
+green_pepper at disposal 99.729942 grams.
+2021-04-26 21:55:13 : made another salad for 8.837274 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:55:13 : waited for chef to dispatch job for 0.000011 seconds
+2021-04-26 21:55:13 :  ingredient tomato given by chef is not enough! JUST receive from bench: 94.801262 grams. I receive 94.801262 of tomato in total
+2021-04-26 21:55:13 :  ingredient onion given by chef is not enough! JUST receive from bench: 28.204529 grams. I receive 28.204529 of onion in total
+2021-04-26 21:55:13 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 52.922523 grams. I receive 52.922523 of green_pepper in total
+2021-04-26 21:55:13 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 55.734428 grams. I receive 108.656952 of green_pepper in total
+2021-04-26 21:55:13 : ingredient green_pepper picked by myself is enough! Just received another 55.734428 grams. I got 108.656952 grams at my disposal! 
+2021-04-26 21:55:13 : waited for chef to put ingredient for 0.000025 seconds
+2021-04-26 21:55:13 : ingredient tomato given by chef is enough! Just received another 64.578369 grams. I got 159.379639 grams at my disposal! 
+2021-04-26 21:55:13 : ingredient onion given by chef is enough! Just received another 34.328648 grams. I got 62.533176 grams at my disposal! 
+2021-04-26 21:55:13 : ingredient green_pepper picked by myself is enough! Just received another 55.734428 grams. I got 108.656952 grams at my disposal! 
+2021-04-26 21:55:13 : finishes with receiving ingredients.
+tomato at disposal 159.379639 grams.
+onion at disposal 62.533176 grams.
+green_pepper at disposal 108.656952 grams.
+2021-04-26 21:55:22 : made another salad for 9.292298 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:55:22 : waited for chef to dispatch job for 0.274585 seconds
+2021-04-26 21:55:22 :  ingredient tomato given by chef is not enough! JUST receive from bench: 80.082336 grams. I receive 80.082336 of tomato in total
+2021-04-26 21:55:22 :  ingredient onion given by chef is not enough! JUST receive from bench: 26.115925 grams. I receive 26.115925 of onion in total
+2021-04-26 21:55:22 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 47.376553 grams. I receive 47.376553 of green_pepper in total
+2021-04-26 21:55:22 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 50.051456 grams. I receive 97.428009 of green_pepper in total
+2021-04-26 21:55:22 : ingredient green_pepper picked by myself is enough! Just received another 50.051456 grams. I got 97.428009 grams at my disposal! 
+2021-04-26 21:55:22 : waited for chef to put ingredient for 0.000034 seconds
+2021-04-26 21:55:22 : ingredient tomato given by chef is enough! Just received another 65.167259 grams. I got 145.249603 grams at my disposal! 
+2021-04-26 21:55:22 :  ingredient onion given by chef is not enough! JUST receive from bench: 31.566879 grams. I receive 57.682804 of onion in total
+2021-04-26 21:55:22 : ingredient green_pepper picked by myself is enough! Just received another 50.051456 grams. I got 97.428009 grams at my disposal! 
+2021-04-26 21:55:22 : waited for chef to put ingredient for 0.000016 seconds
+2021-04-26 21:55:22 : ingredient tomato given by chef is enough! Just received another 0.000000 grams. I got 145.249603 grams at my disposal! 
+2021-04-26 21:55:22 : ingredient onion given by chef is enough! Just received another 35.328423 grams. I got 93.011230 grams at my disposal! 
+2021-04-26 21:55:22 : ingredient green_pepper picked by myself is enough! Just received another 50.051456 grams. I got 97.428009 grams at my disposal! 
+2021-04-26 21:55:22 : finishes with receiving ingredients.
+tomato at disposal 145.249603 grams.
+onion at disposal 93.011230 grams.
+green_pepper at disposal 97.428009 grams.
+2021-04-26 21:55:31 : made another salad for 8.738658 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:55:31 : waited for chef to dispatch job for 0.004269 seconds
+2021-04-26 21:55:31 :  ingredient tomato given by chef is not enough! JUST receive from bench: 82.164726 grams. I receive 82.164726 of tomato in total
+2021-04-26 21:55:31 :  ingredient onion given by chef is not enough! JUST receive from bench: 32.300819 grams. I receive 32.300819 of onion in total
+2021-04-26 21:55:31 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 51.876652 grams. I receive 51.876652 of green_pepper in total
+2021-04-26 21:55:31 :  ingredient green_pepper picked by myself is not enough! JUST receive from bench: 54.396336 grams. I receive 106.272987 of green_pepper in total
+2021-04-26 21:55:31 : ingredient green_pepper picked by myself is enough! Just received another 54.396336 grams. I got 106.272987 grams at my disposal! 
+2021-04-26 21:55:31 : waited for chef to put ingredient for 0.000000 seconds
+2021-04-26 21:55:31 : ingredient tomato given by chef is enough! Just received another 68.423515 grams. I got 150.588242 grams at my disposal! 
+2021-04-26 21:55:31 : ingredient onion given by chef is enough! Just received another 33.603458 grams. I got 65.904282 grams at my disposal! 
+2021-04-26 21:55:31 : ingredient green_pepper picked by myself is enough! Just received another 54.396336 grams. I got 106.272987 grams at my disposal! 
+2021-04-26 21:55:31 : finishes with receiving ingredients.
+tomato at disposal 150.588242 grams.
+onion at disposal 65.904282 grams.
+green_pepper at disposal 106.272987 grams.
+2021-04-26 21:55:40 : made another salad for 9.189229 seconds
+************************
+
+************************
+New salad making start from here
+2021-04-26 21:55:40 : waited for chef to dispatch job for 0.000049 seconds
+2021-04-26 21:55:40 : finished! I made 21 salads in total
